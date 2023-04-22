@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b0444008-3536-4f09-bc1f-06b5aa2fefa6": {
+      "ProjectGuid": "b0444008-3536-4f09-bc1f-06b5aa2fefa6",
+      "DisplayName": "BrainLinkSDK_Windows",
+      "ColorIndex": 0
+    },
+    "6c0cb568-8f17-4808-b859-c7bb9510c149": {
+      "ProjectGuid": "6c0cb568-8f17-4808-b859-c7bb9510c149",
+      "DisplayName": "BrainLinkConnect",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "杂项文件",
+      "ColorIndex": -1
+    },
+    "1e519bcd-54e5-4bfb-b4da-bd8b5b223f3e": {
+      "ProjectGuid": "1e519bcd-54e5-4bfb-b4da-bd8b5b223f3e",
+      "DisplayName": "BrainLinkSDK_Windows",
+      "ColorIndex": 2
+    },
+    "b9810cca-6aa8-4069-8b74-b986974df574": {
+      "ProjectGuid": "b9810cca-6aa8-4069-8b74-b986974df574",
+      "DisplayName": "BrainLinkAlgoSDK",
+      "ColorIndex": 3
+    },
+    "a1bede36-9d57-44f4-8383-f201ff895eba": {
+      "ProjectGuid": "a1bede36-9d57-44f4-8383-f201ff895eba",
+      "DisplayName": "BrainLinkSDK_Windows",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

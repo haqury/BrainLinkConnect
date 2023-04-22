@@ -1,0 +1,36 @@
+D:\VSProject\BrainLinkConnect\bin\Debug\BrainLinkConnect.exe.config
+D:\VSProject\BrainLinkConnect\bin\Debug\BrainLinkConnect.exe
+D:\VSProject\BrainLinkConnect\bin\Debug\BrainLinkConnect.pdb
+D:\VSProject\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.AssemblyReference.cache
+D:\VSProject\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.SuggestedBindingRedirects.cache
+D:\VSProject\BrainLinkConnect\obj\Debug\BrainLinkConnect.Form1.resources
+D:\VSProject\BrainLinkConnect\obj\Debug\BrainLinkConnect.Properties.Resources.resources
+D:\VSProject\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.GenerateResource.cache
+D:\VSProject\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.CoreCompileInputs.cache
+D:\VSProject\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.CopyComplete
+D:\VSProject\BrainLinkConnect\obj\Debug\BrainLinkConnect.exe
+D:\VSProject\BrainLinkConnect\obj\Debug\BrainLinkConnect.pdb
+D:\VSProject\BrainLinkConnect\bin\Debug\BrainLinkSDK_Windows.dll
+D:\VSProject\BrainLinkConnect\bin\Debug\wclBluetoothFramework.dll
+D:\VSProject\BrainLinkConnect\bin\Debug\wclCommunication.dll
+D:\VSProject\BrainLinkConnect\bin\Debug\wclCommon.dll
+D:\VSProject\BrainLinkConnect\bin\Debug\BrainLinkAlgoSDK.dll
+D:\VSProject\BrainLinkConnect\bin\Debug\BrainLinkAlgoSDK.pdb
+D:\VSProject\BrainLinkConnect\bin\Debug\BrainLinkSDK_Windows.pdb
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.AssemblyReference.cache
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.SuggestedBindingRedirects.cache
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\obj\Debug\BrainLinkConnect.Form1.resources
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\obj\Debug\BrainLinkConnect.Properties.Resources.resources
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.GenerateResource.cache
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.CoreCompileInputs.cache
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\obj\Debug\BrainLinkConnect.exe
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\obj\Debug\BrainLinkConnect.pdb
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\bin\Debug\BrainLinkConnect.exe.config
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\bin\Debug\BrainLinkConnect.exe
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\bin\Debug\BrainLinkConnect.pdb
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\bin\Debug\BrainLinkSDK_Windows.dll
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\bin\Debug\wclBluetoothFramework.dll
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\bin\Debug\wclCommon.dll
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\bin\Debug\wclCommunication.dll
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.CopyComplete
+D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\bin\Debug\BrainLinkSDK_Windows.pdb
