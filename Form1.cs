@@ -16,27 +16,27 @@ using System.Net;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-[Serializable]
-public class BrainLinkToServiseDto
-{
-    public int id;
-    public BrainLinkModel input;
-    public SystemInfo system;
-}
+using InTheHand.Net.Sockets;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using BrainLinkConnect.service;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
-public class SystemInfo
-{
-    public int x;
-    public int y;
-}
+using System.Windows.Input;
+
 
 namespace BrainLinkConnect
 {
     public partial class Form1 : Form
     {
+        private EventMouse eventMouse = new EventMouse();
         private BrainLinkSDK brainLinkSDK;
-        private BrainLinkToServiseDto brainLinkToServiseDto;
-
+        private BrainLinkToServiseDto brainLinkToServiseDto = new BrainLinkToServiseDto();
+        public service.Map Map = new service.Map();
+        private service.services services = new service.services();
 
         public int OnEEGDataEventId = 1;
 
@@ -50,23 +50,22 @@ namespace BrainLinkConnect
 
         private List<(long, string)> Devices = new List<(long, string)>();
 
-        private UdpClient udpClient = new UdpClient(11000);
+        private UdpClient udpClient = new UdpClient();
+        private UdpClient udpServer = new UdpClient(5001);
+        private IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 5000);
+
+        private SystemService systemService = new SystemService();
 
         private BinaryFormatter bf = new BinaryFormatter();
 
         private MemoryStream ms = new MemoryStream();
-        
+
+        private List<BluetoothDeviceInfo> devices = new List<BluetoothDeviceInfo>();
+            private BluetoothClient client = new BluetoothClient();
+
         public Form1()
         {
-            // This constructor arbitrarily assigns the local port number.
-            try
-            {
-                udpClient.Connect("127.0.0.1", 5005);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
+            systemService.config = new SystemServiceConfig();
 
             InitializeComponent();
 
@@ -118,7 +117,6 @@ namespace BrainLinkConnect
                 }
                 hrvString += " avg:" + ave.ToString("F2") + " size:" + hrvList.Count;
                 hrvList.Clear();
-                hrvLabel.Text = hrvString;
                 hrvBox.Text = "";
             }
         }
@@ -144,29 +142,42 @@ namespace BrainLinkConnect
         {
             Debug.WriteLine("Click");
             brainLinkSDK.Start();
+
+            var peers = client.DiscoverDevices();
+            foreach (var peer in peers)
+            {
+                devices.Add(peer);
+            }
+
             listBox1.Items.Clear();
             Devices.Clear();
         }
 
         private void BrainLinkSDK_OnEEGDataEvent(BrainLinkModel Model)
         {
+            if (Model == null) return;
+
             brainLinkToServiseDto.input = Model;
-            brainLinkToServiseDto.system = new SystemInfo();
-            brainLinkToServiseDto.system.x = Location.X;
-            brainLinkToServiseDto.system.y = Location.Y;
+
+            brainLinkToServiseDto.system = systemService.Run(brainLinkToServiseDto.system);
             brainLinkToServiseDto.id = OnEEGDataEventId;
+            if (IsUseKeySave.Checked)
+            {
+                brainLinkToServiseDto.eventName = keyI.Text;
+            }
+
+            services.mouse.check(brainLinkToServiseDto, this);
+
+            onEEGDataEventChangeTable(Model);
 
             bf.Serialize(ms, brainLinkToServiseDto);
-            udpClient.Send(ms.ToArray(), ms.ToArray().Length);
+            byte[] buffer = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(brainLinkToServiseDto));
 
-            // Uses the IPEndPoint object to determine which of these two hosts responded.
-            // Console.WriteLine("This is the message you received " +
-            //                             returnData.ToString());
-            // Console.WriteLine("This message was sent from " +
-            //                            RemoteIpEndPoint.Address.ToString() +
-            //                            " on their port number " +
-            //                              RemoteIpEndPoint.Port.ToString());
+            udpClient.SendAsync(buffer, buffer.Length, "127.0.0.1", 1234);
+        }
 
+        private void onEEGDataEventChangeTable(BrainLinkModel Model)
+        {
             att.Text = Model.Attention.ToString();
             med.Text = Model.Meditation.ToString();
             delta.Text = Model.Delta.ToString();
@@ -178,8 +189,6 @@ namespace BrainLinkConnect
             lgamma.Text = Model.LowGamma.ToString();
             hgamma.Text = Model.HighGamma.ToString();
             signal.Text = Model.Signal.ToString();
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -214,6 +223,7 @@ namespace BrainLinkConnect
         {
             brainLinkSDK.Close();
             udpClient.Close();
+            udpServer.Close();
             brainLinkSDK = null;
             Dispose();
             Application.Exit();
@@ -221,7 +231,6 @@ namespace BrainLinkConnect
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            
         }
 
         private void Connect_Click(object sender, EventArgs e)
@@ -230,7 +239,89 @@ namespace BrainLinkConnect
             {
                 (long, string) Device = Devices[listBox1.SelectedIndex];
                 brainLinkSDK.connect(Device.Item1);
+                brainLinkToServiseDto.system = systemService.UpdateGetInfo();
+
+
+                using (WebClient client = new WebClient())
+                {
+                    string data = "Sample data to send";
+
+                    byte[] buffer = client.UploadData("http://localhost:5001/", "POST", Encoding.UTF8.GetBytes(data));
+                    string response = Encoding.UTF8.GetString(client.UploadData("http://localhost:5001/", "POST", Encoding.UTF8.GetBytes(data)));
+                    Map = JsonConvert.DeserializeObject<Map>(response);
+                    Console.WriteLine(response);
+                }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            resync();
+        }
+
+        public void resync()
+        {
+            var c = false;
+            if (controll.Checked)
+            {
+                c = true; controll.Checked = false;
+            }
+
+            using (WebClient client = new WebClient())
+            {
+                string data = "Sample data to send";
+
+                string response = Encoding.UTF8.GetString(client.UploadData("http://localhost:5001/", "POST", Encoding.UTF8.GetBytes(data)));
+                Console.WriteLine(response);
+                services.mouse.saveMap(JsonConvert.DeserializeObject<Map>(response));
+            }
+
+            if (c) { controll.Checked = true; }
+        }
+
+        public void resyncEvent()
+        {
+            var c = false;
+            if (controll.Checked)
+            {
+                c = true; controll.Checked = false;
+            }
+
+            using (WebClient client = new WebClient())
+            {
+                string data = "Sample data to send";
+
+                string response = Encoding.UTF8.GetString(client.UploadData("http://localhost:5001/event", "POST", Encoding.UTF8.GetBytes(data)));
+                Console.WriteLine(response);
+                Map = JsonConvert.DeserializeObject<Map>(response);
+            }
+
+            if (c) { controll.Checked = true; }
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lgamma_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hrvBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResynKey_Click(object sender, EventArgs e)
+        {
+            resyncEvent();
         }
     }
 }
