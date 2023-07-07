@@ -26,6 +26,7 @@ using System.Runtime.InteropServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 using System.Windows.Input;
+using System.Runtime.InteropServices.ComTypes;
 
 
 namespace BrainLinkConnect
@@ -35,6 +36,9 @@ namespace BrainLinkConnect
         private EventMouse eventMouse = new EventMouse();
         private BrainLinkSDK brainLinkSDK;
         private BrainLinkToServiseDto brainLinkToServiseDto = new BrainLinkToServiseDto();
+        private BrainLinkToServiseDto brainLinkToServiseConfig = new BrainLinkToServiseDto();
+
+        public History history = new History();
         public service.Map Map = new service.Map();
         private service.services services = new service.services();
 
@@ -63,11 +67,15 @@ namespace BrainLinkConnect
         private List<BluetoothDeviceInfo> devices = new List<BluetoothDeviceInfo>();
             private BluetoothClient client = new BluetoothClient();
 
+
+        private string configPath = "config.json";
+
         public Form1()
         {
             systemService.config = new SystemServiceConfig();
 
             InitializeComponent();
+
 
             brainLinkSDK = new BrainLinkSDK();
             brainLinkSDK.OnEEGDataEvent += new BrainLinkSDKEEGDataEvent(BrainLinkSDK_OnEEGDataEvent);
@@ -165,15 +173,51 @@ namespace BrainLinkConnect
             {
                 brainLinkToServiseDto.eventName = keyI.Text;
             }
+            else if(checkBoxMl.Checked)
+            {
+                brainLinkToServiseDto.eventName = "ml";
+            } 
+            else if (checkBoxMr.Checked)
+            {
+                brainLinkToServiseDto.eventName = "mr";
+            }
+            else if (checkBoxMu.Checked)
+            {
+                brainLinkToServiseDto.eventName = "mu";
+            }
+            else if (checkBoxMd.Checked)
+            {
+                brainLinkToServiseDto.eventName = "md";
+            }
+            else
+            {
+                brainLinkToServiseDto.eventName = "";
+            }
 
             services.mouse.check(brainLinkToServiseDto, this);
 
             onEEGDataEventChangeTable(Model);
 
-            bf.Serialize(ms, brainLinkToServiseDto);
-            byte[] buffer = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(brainLinkToServiseDto));
+            if (brainLinkToServiseDto.eventName == "") return;
 
-            udpClient.SendAsync(buffer, buffer.Length, "127.0.0.1", 1234);
+            Console.WriteLine("eventName:" + brainLinkToServiseDto.eventName);
+            EegHistoryModel eeg = EegHistoryModel.getFromDto(brainLinkToServiseDto);
+            history.Add(eeg);
+
+
+            // bf.Serialize(ms, brainLinkToServiseDto);
+            // byte[] buffer = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(brainLinkToServiseDto));
+            // udpClient.SendAsync(buffer, buffer.Length, "127.0.0.1", 1234);
+        }
+
+
+        private void saveToFile()
+        {
+            string filePath = "data.json";
+            using (StreamWriter streamWriter = new StreamWriter(filePath))
+            {
+                streamWriter.Write(history.ToString());
+            }
         }
 
         private void onEEGDataEventChangeTable(BrainLinkModel Model)
@@ -245,11 +289,6 @@ namespace BrainLinkConnect
                 using (WebClient client = new WebClient())
                 {
                     string data = "Sample data to send";
-
-                    byte[] buffer = client.UploadData("http://localhost:5001/", "POST", Encoding.UTF8.GetBytes(data));
-                    string response = Encoding.UTF8.GetString(client.UploadData("http://localhost:5001/", "POST", Encoding.UTF8.GetBytes(data)));
-                    Map = JsonConvert.DeserializeObject<Map>(response);
-                    Console.WriteLine(response);
                 }
             }
         }
@@ -289,11 +328,23 @@ namespace BrainLinkConnect
 
             using (WebClient client = new WebClient())
             {
-                string data = "Sample data to send";
+                BrainLinkModel model = new BrainLinkModel();
+                model.Attention = int.Parse(textBoxAttention.Text);
+                model.Meditation = int.Parse(textBoxMeditation.Text);
+                model.Delta = int.Parse(textBoxDelta.Text);
+                model.Theta = int.Parse(textBoxTheta.Text);
+                model.LowAlpha = int.Parse(textBoxLowAlpha.Text);
+                model.HighAlpha = int.Parse(textBoxHighAlpha.Text);
+                model.LowBeta = int.Parse(textBoxLowBeta.Text);
+                model.HighBeta = int.Parse(textBoxHighBeta.Text);
+                model.LowGamma = int.Parse(textBoxLowGamma.Text);
+                model.HighGamma = int.Parse(textBoxHighGamma.Text);
 
+                string data = JsonConvert.SerializeObject(model);
                 string response = Encoding.UTF8.GetString(client.UploadData("http://localhost:5001/event", "POST", Encoding.UTF8.GetBytes(data)));
                 Console.WriteLine(response);
-                Map = JsonConvert.DeserializeObject<Map>(response);
+                history = JsonConvert.DeserializeObject<History>(response); 
+                Console.WriteLine(history);
             }
 
             if (c) { controll.Checked = true; }
@@ -322,6 +373,71 @@ namespace BrainLinkConnect
         private void ResynKey_Click(object sender, EventArgs e)
         {
             resyncEvent();
+        }
+
+        private void saveToFileB_Click(object sender, EventArgs e)
+        {
+            if (history.Count() == 0)
+            {
+                Console.WriteLine("not history");
+                return;
+            }
+
+            string filePath = getHistorySavePath();
+            using (StreamWriter streamWriter = new StreamWriter(filePath))
+            {
+                streamWriter.Write(JsonConvert.SerializeObject(history));
+            }
+        }
+
+        private void LoadFromFile_Click(object sender, EventArgs e)
+        {
+            string filePath = getHistorySavePath();
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("not correct path file");
+                return;
+            }
+
+            string jsonString = File.ReadAllText(filePath);
+            history = JsonConvert.DeserializeObject<History>(jsonString);
+            Console.WriteLine("history" + history.Count.ToString());
+        }
+
+
+        private string getHistorySavePath()
+        {
+            if (!Directory.Exists(getHistorySaveDir()))
+            {
+                Directory.CreateDirectory(getHistorySaveDir());
+            }
+            return getHistorySaveDir() + textBoxPostfix.Text + ".json";
+        }
+
+        private string getHistorySaveDir()
+        {
+            return userName.Text + "/";
+        }
+
+        private void SaveConfig_Click(object sender, EventArgs e)
+        {
+            Config config = Config.GetConfig(this);
+            using (StreamWriter streamWriter = new StreamWriter(configPath))
+            {
+                streamWriter.Write(JsonConvert.SerializeObject(config));
+            }
+        }
+
+        private async void loadConfig_Click(object sender, EventArgs e)
+        {
+            string jsonString = File.ReadAllText(configPath);
+            Config config = JsonConvert.DeserializeObject<Config>(jsonString);
+            config.set(this);
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            history.Clear();
         }
     }
 }

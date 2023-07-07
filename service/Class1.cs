@@ -45,7 +45,7 @@ namespace BrainLinkConnect.service
 
         public EventMouse GetEvent(BrainLinkToServiseDto brainLinkToServiseDto)
         {
-            return Events.Find(x => x.current().input.HighBeta == brainLinkToServiseDto.input.HighBeta +- 10);
+            return Events.Find(x => x.current().input.HighBeta == brainLinkToServiseDto.input.HighBeta + -10);
         }
 
         public bool GetEvent(EventMouse e, BrainLinkToServiseDto b)
@@ -87,7 +87,7 @@ namespace BrainLinkConnect.service
     public class Mouse
     {
 
-
+        private System.Threading.Timer timer;
         private int iterator = 0;
         private Map map = new Map();
 
@@ -107,7 +107,7 @@ namespace BrainLinkConnect.service
 
         public void check(BrainLinkToServiseDto brainLinkToServiseDto, Form1 form)
         {
-
+            if (timer != null) { timer.Dispose(); }
             if (brainLinkToServiseDto.system.isUseMouse())
             {
                 getEvent(brainLinkToServiseDto, form).EegDto.Add(brainLinkToServiseDto);
@@ -120,49 +120,43 @@ namespace BrainLinkConnect.service
             }
             else
             {
-                if (form.controll.Checked)
-                {
-                    var eventMouse = getEvent(brainLinkToServiseDto, form);
-                    if (eventMouse != null)
-                    {
-                        play(eventMouse, form.senc.Value);
-                    }
-                }
                 if (form.IsUseKey.Checked)
                 {
-                    var eventMouse = getEvent(brainLinkToServiseDto, form);
-                    if (eventMouse != null)
+                    var eventName = form.history.getEventNameBy(brainLinkToServiseDto, form);
+                    if (eventName != null)
                     {
-                        play(eventMouse, form.senc.Value);
+                        timer = new System.Threading.Timer(playKey, eventName, 0, 10);
                     }
                 }
             }
         }
 
-        public void playKey(EventMouse eventMouse, int senc)
+        private void playKey(object eventMouse)
         {
-            switch (eventMouse.current().eventName)
+            switch (eventMouse)
             {
-                case "leftM":
-                    Cursor.Position = new Point(Cursor.Position.X - 10, Cursor.Position.Y);
+                case "ml":
+                    Cursor.Position = new Point(Cursor.Position.X - 1, Cursor.Position.Y);
                     break;
-                case "rightM":
-                    Cursor.Position = new Point(Cursor.Position.X + 10, Cursor.Position.Y);
+                case "mr":
+                    Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
                     break;
-                case "downM":
-                    Cursor.Position = new Point(Cursor.Position.X - 10, Cursor.Position.Y);
+                case "md":
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 1);
                     break;
-                case "upM":
-                    Cursor.Position = new Point(Cursor.Position.X + 10, Cursor.Position.Y);
+                case "mu":
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 1);
                     break;
             }
         }
+
         public void play(EventMouse eventMouse, int senc)
         {
             Console.WriteLine("count eventList: " + eventMouse.EegDto.Count);
-            if (eventMouse.EegDto.Count != 0) {
+            if (eventMouse.EegDto.Count != 0)
+            {
                 Console.WriteLine("event: " + eventMouse.current().input.ToString());
-                
+
                 var sencX = eventMouse.current().system.toX;
                 var sencY = eventMouse.current().system.toY;
 
@@ -182,7 +176,7 @@ namespace BrainLinkConnect.service
 
                 // 0x0001 | 0x8000: Move + Absolute position
                 //Mouse_Event(0x0001 | 0x8000, mic_x, mic_y, 0, 0);
-                Cursor.Position = new Point(Cursor.Position.X + sencX, Cursor.Position.Y + sencY);                            
+                Cursor.Position = new Point(Cursor.Position.X + sencX, Cursor.Position.Y + sencY);
             }
         }
 
@@ -193,6 +187,7 @@ namespace BrainLinkConnect.service
 
             var newMap = map.getBy(m, form);
             if (newMap.Count == 0) return new EventMouse();
+
             return newMap.First();
         }
 
@@ -216,4 +211,87 @@ namespace BrainLinkConnect.service
     }
 
 
+    [Serializable]
+    public class EegHistoryModel
+    {
+        public int Attention { get; set; }
+        public int Meditation { get; set; }
+        public int Signal { get; set; }
+        public int Delta { get; set; }
+        public int Theta { get; set; }
+        public int LowAlpha { get; set; }
+        public int HighAlpha { get; set; }
+        public int LowBeta { get; set; }
+        public int HighBeta { get; set; }
+        public int LowGamma { get; set; }
+        public int HighGamma { get; set; }
+        public string EventName { get; set; }
+
+        public static EegHistoryModel getFromDto(BrainLinkToServiseDto dto)
+        {
+            return new EegHistoryModel
+            {
+                Attention = dto.input.Attention,
+                Meditation = dto.input.Meditation,
+                Signal = dto.input.Signal,
+                Delta = dto.input.Delta,
+                Theta = dto.input.Theta,
+                LowAlpha = dto.input.LowAlpha,
+                HighAlpha = dto.input.HighAlpha,
+                LowBeta = dto.input.LowBeta,
+                HighBeta = dto.input.HighBeta,
+                LowGamma = dto.input.LowGamma,
+                HighGamma = dto.input.HighGamma,
+                EventName = dto.eventName,
+            };
+        }
+    }
+
+
+    [Serializable]
+    public class Config
+    {
+        public int Attention { get; set; }
+        public int Meditation { get; set; }
+        public int Signal { get; set; }
+        public int Delta { get; set; }
+        public int Theta { get; set; }
+        public int LowAlpha { get; set; }
+        public int HighAlpha { get; set; }
+        public int LowBeta { get; set; }
+        public int HighBeta { get; set; }
+        public int LowGamma { get; set; }
+        public int HighGamma { get; set; }
+        
+        public static Config GetConfig(Form1 form)
+        {
+            Config config = new Config();
+            config.Attention = int.Parse(form.textBoxAttention.Text);
+            config.Meditation = int.Parse(form.textBoxMeditation.Text);
+            config.Delta = int.Parse(form.textBoxDelta.Text);
+            config.Theta = int.Parse(form.textBoxTheta.Text);
+            config.LowAlpha = int.Parse(form.textBoxLowAlpha.Text);
+            config.HighAlpha = int.Parse(form.textBoxHighAlpha.Text);
+            config.LowBeta = int.Parse(form.textBoxLowBeta.Text);
+            config.HighBeta = int.Parse(form.textBoxHighBeta.Text);
+            config.LowGamma = int.Parse(form.textBoxLowGamma.Text);
+            config.HighGamma = int.Parse(form.textBoxHighGamma.Text);
+            return config;
+        }
+
+
+        public void set(Form1 form)
+        {
+            form.textBoxAttention.Text = this.Attention.ToString();
+            form.textBoxMeditation.Text = this.Meditation.ToString();
+            form.textBoxDelta.Text = this.Delta.ToString();
+            form.textBoxTheta.Text = this.Theta.ToString();
+            form.textBoxLowAlpha.Text = this.LowAlpha.ToString();
+            form.textBoxHighAlpha.Text = this.HighAlpha.ToString();
+            form.textBoxLowBeta.Text = this.LowBeta.ToString();
+            form.textBoxHighBeta.Text = this.HighBeta.ToString();
+            form.textBoxLowGamma.Text = this.LowGamma.ToString();
+            form.textBoxHighGamma.Text = this.HighGamma.ToString();
+        }
+    }
 }
