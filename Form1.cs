@@ -9,12 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using ContollerBL.service;
 using BrainLinkSDK_Windows;
 using System.Threading;
 using System.Net.Sockets;
 using System.Net;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using ContollerBL.dto;
+
 
 using InTheHand.Net.Sockets;
 using System.Text;
@@ -29,17 +32,16 @@ using System.Windows.Input;
 using System.Runtime.InteropServices.ComTypes;
 
 
+
 namespace BrainLinkConnect
 {
     public partial class Form1 : Form
     {
-        private EventMouse eventMouse = new EventMouse();
         private BrainLinkSDK brainLinkSDK;
         private BrainLinkToServiseDto brainLinkToServiseDto = new BrainLinkToServiseDto();
-        private BrainLinkToServiseDto brainLinkToServiseConfig = new BrainLinkToServiseDto();
 
-        public History history = new History();
-        public service.Map Map = new service.Map();
+        private ContollerBL.service.ContollerBL controllerBL = new ContollerBL.service.ContollerBL();
+
         private service.services services = new service.services();
 
         public int OnEEGDataEventId = 1;
@@ -84,6 +86,8 @@ namespace BrainLinkConnect
             brainLinkSDK.OnHRVDataEvent += new BrainLinkSDKHRVDataEvent(BrainLinkSDK_OnHRVDataEvent);
             brainLinkSDK.OnRawDataEvent += new BrainLinkSDKRawDataEvent(BrainLinkSDK_OnRawDataEvent);
             brainLinkSDK.OnDeviceFound += new BrainLinkSDKOnDeviceFoundEvent(BrainLinkSDK_OnDeviceFoundEvent);
+
+            KeyPreview = true;
         }
 
         private void BrainLinkSDK_OnDeviceFoundEvent(long Address, string Name)
@@ -165,44 +169,39 @@ namespace BrainLinkConnect
         {
             if (Model == null) return;
 
-            brainLinkToServiseDto.input = Model;
+            EegHistoryModel h = new EegHistoryModel();
+            h.Attention = Model.Attention;
+            h.Meditation = Model.Meditation;
+            h.Delta = Model.Delta;
+            h.Theta = Model.Theta;
+            h.LowAlpha = Model.LowAlpha;
+            h.HighAlpha = Model.HighAlpha;
+            h.LowBeta = Model.LowBeta;
+            h.HighBeta = Model.HighBeta;
+            h.LowGamma = Model.LowGamma;
+            h.HighGamma = Model.HighGamma;
 
-            brainLinkToServiseDto.system = systemService.Run(brainLinkToServiseDto.system);
-            brainLinkToServiseDto.id = OnEEGDataEventId;
-            if (IsUseKeySave.Checked)
-            {
-                brainLinkToServiseDto.eventName = keyI.Text;
-            }
-            else if(checkBoxMl.Checked)
-            {
-                brainLinkToServiseDto.eventName = "ml";
-            } 
-            else if (checkBoxMr.Checked)
-            {
-                brainLinkToServiseDto.eventName = "mr";
-            }
-            else if (checkBoxMu.Checked)
-            {
-                brainLinkToServiseDto.eventName = "mu";
-            }
-            else if (checkBoxMd.Checked)
-            {
-                brainLinkToServiseDto.eventName = "md";
-            }
-            else
-            {
-                brainLinkToServiseDto.eventName = "";
-            }
+            h.EventName = getEventName();
 
-            services.mouse.check(brainLinkToServiseDto, this);
+            EegHistoryModel fault = GetConfigFault();
+            ConfigParams config = new ConfigParams();
+            config.EegFault = fault;
+
+            if (Autouse.Checked == true && h.EventName != "")
+            {
+                services.mouse.play(h, config, h.EventName, IsUseKey.Checked);
+            } else
+            {
+                services.mouse.play(h, config, controllerBL.History.getEventNameBy(h, config), IsUseKey.Checked);
+            }
 
             onEEGDataEventChangeTable(Model);
 
-            if (brainLinkToServiseDto.eventName == "") return;
+            if (h.EventName == "") return;
+            Console.WriteLine(h.EventName);
+            controllerBL.History.Add(h);
 
-            Console.WriteLine("eventName:" + brainLinkToServiseDto.eventName);
-            EegHistoryModel eeg = EegHistoryModel.getFromDto(brainLinkToServiseDto);
-            history.Add(eeg);
+            CounterL.Text = controllerBL.History.Count().ToString();
 
 
             // bf.Serialize(ms, brainLinkToServiseDto);
@@ -210,15 +209,53 @@ namespace BrainLinkConnect
             // udpClient.SendAsync(buffer, buffer.Length, "127.0.0.1", 1234);
         }
 
-
-        private void saveToFile()
+        private EegHistoryModel GetConfigFault()
         {
-            string filePath = "data.json";
-            using (StreamWriter streamWriter = new StreamWriter(filePath))
+            EegHistoryModel config = new EegHistoryModel();
+            try
             {
-                streamWriter.Write(history.ToString());
+                config.Attention = int.Parse(this.textBoxAttention.Text);
+                config.Meditation = int.Parse(this.textBoxMeditation.Text);
+                config.Delta = int.Parse(this.textBoxDelta.Text);
+                config.Theta = int.Parse(this.textBoxTheta.Text);
+                config.LowAlpha = int.Parse(this.textBoxLowAlpha.Text);
+                config.HighAlpha = int.Parse(this.textBoxHighAlpha.Text);
+                config.LowBeta = int.Parse(this.textBoxLowBeta.Text);
+                config.HighBeta = int.Parse(this.textBoxHighBeta.Text);
+                config.LowGamma = int.Parse(this.textBoxLowGamma.Text);
+                config.HighGamma = int.Parse(this.textBoxHighGamma.Text);
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
+            return config;
         }
+
+        private string getEventName()
+        {
+            if (IsUseKeySave.Checked)
+            {
+               return keyI.Text;
+            }
+            else if (checkBoxMl.Checked)
+            {
+                return "ml";
+            }
+            else if (checkBoxMr.Checked)
+            {
+                return "mr";
+            }
+            else if (checkBoxMu.Checked)
+            {
+                return "mu";
+            }
+            else if (checkBoxMd.Checked)
+            {
+                return "md";
+            }
+            return "";
+        }
+
 
         private void onEEGDataEventChangeTable(BrainLinkModel Model)
         {
@@ -237,9 +274,10 @@ namespace BrainLinkConnect
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            KeyPreview = true;
             //Debug.WriteLine("Click");
             //brainLinkSDK.Start();
-            
+
         }
 
         private double StandardDiviation(float[] x)
@@ -283,71 +321,7 @@ namespace BrainLinkConnect
             {
                 (long, string) Device = Devices[listBox1.SelectedIndex];
                 brainLinkSDK.connect(Device.Item1);
-                brainLinkToServiseDto.system = systemService.UpdateGetInfo();
-
-
-                using (WebClient client = new WebClient())
-                {
-                    string data = "Sample data to send";
-                }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            resync();
-        }
-
-        public void resync()
-        {
-            var c = false;
-            if (controll.Checked)
-            {
-                c = true; controll.Checked = false;
-            }
-
-            using (WebClient client = new WebClient())
-            {
-                string data = "Sample data to send";
-
-                string response = Encoding.UTF8.GetString(client.UploadData("http://localhost:5001/", "POST", Encoding.UTF8.GetBytes(data)));
-                Console.WriteLine(response);
-                services.mouse.saveMap(JsonConvert.DeserializeObject<Map>(response));
-            }
-
-            if (c) { controll.Checked = true; }
-        }
-
-        public void resyncEvent()
-        {
-            var c = false;
-            if (controll.Checked)
-            {
-                c = true; controll.Checked = false;
-            }
-
-            using (WebClient client = new WebClient())
-            {
-                BrainLinkModel model = new BrainLinkModel();
-                model.Attention = int.Parse(textBoxAttention.Text);
-                model.Meditation = int.Parse(textBoxMeditation.Text);
-                model.Delta = int.Parse(textBoxDelta.Text);
-                model.Theta = int.Parse(textBoxTheta.Text);
-                model.LowAlpha = int.Parse(textBoxLowAlpha.Text);
-                model.HighAlpha = int.Parse(textBoxHighAlpha.Text);
-                model.LowBeta = int.Parse(textBoxLowBeta.Text);
-                model.HighBeta = int.Parse(textBoxHighBeta.Text);
-                model.LowGamma = int.Parse(textBoxLowGamma.Text);
-                model.HighGamma = int.Parse(textBoxHighGamma.Text);
-
-                string data = JsonConvert.SerializeObject(model);
-                string response = Encoding.UTF8.GetString(client.UploadData("http://localhost:5001/event", "POST", Encoding.UTF8.GetBytes(data)));
-                Console.WriteLine(response);
-                history = JsonConvert.DeserializeObject<History>(response); 
-                Console.WriteLine(history);
-            }
-
-            if (c) { controll.Checked = true; }
         }
 
         private void chart1_Click(object sender, EventArgs e)
@@ -370,58 +344,21 @@ namespace BrainLinkConnect
 
         }
 
-        private void ResynKey_Click(object sender, EventArgs e)
-        {
-            resyncEvent();
-        }
-
         private void saveToFileB_Click(object sender, EventArgs e)
         {
-            if (history.Count() == 0)
-            {
-                Console.WriteLine("not history");
-                return;
-            }
 
-            string filePath = getHistorySavePath();
-            using (StreamWriter streamWriter = new StreamWriter(filePath))
-            {
-                streamWriter.Write(JsonConvert.SerializeObject(history));
-            }
+            controllerBL.save(userName.Text, textBoxPostfix.Text);
         }
 
         private void LoadFromFile_Click(object sender, EventArgs e)
         {
-            string filePath = getHistorySavePath();
-            if (!File.Exists(filePath))
-            {
-                Console.WriteLine("not correct path file");
-                return;
-            }
-
-            string jsonString = File.ReadAllText(filePath);
-            history = JsonConvert.DeserializeObject<History>(jsonString);
-            Console.WriteLine("history" + history.Count.ToString());
-        }
-
-
-        private string getHistorySavePath()
-        {
-            if (!Directory.Exists(getHistorySaveDir()))
-            {
-                Directory.CreateDirectory(getHistorySaveDir());
-            }
-            return getHistorySaveDir() + textBoxPostfix.Text + ".json";
-        }
-
-        private string getHistorySaveDir()
-        {
-            return userName.Text + "/";
+            controllerBL.load(userName.Text, textBoxPostfix.Text);
+            CounterL.Text = controllerBL.History.Count().ToString();
         }
 
         private void SaveConfig_Click(object sender, EventArgs e)
         {
-            Config config = Config.GetConfig(this);
+            EegHistoryModel config = GetConfigFault();
             using (StreamWriter streamWriter = new StreamWriter(configPath))
             {
                 streamWriter.Write(JsonConvert.SerializeObject(config));
@@ -431,13 +368,84 @@ namespace BrainLinkConnect
         private async void loadConfig_Click(object sender, EventArgs e)
         {
             string jsonString = File.ReadAllText(configPath);
-            Config config = JsonConvert.DeserializeObject<Config>(jsonString);
-            config.set(this);
+            EegHistoryModel config = JsonConvert.DeserializeObject<EegHistoryModel>(jsonString);
+
+            textBoxAttention.Text = config.Attention.ToString();
+            textBoxMeditation.Text = config.Meditation.ToString();
+            textBoxDelta.Text = config.Delta.ToString();
+            textBoxTheta.Text = config.Theta.ToString();
+            textBoxLowAlpha.Text = config.LowAlpha.ToString();
+            textBoxHighAlpha.Text = config.HighAlpha.ToString();
+            textBoxLowBeta.Text = config.LowBeta.ToString();
+            textBoxHighBeta.Text = config.HighBeta.ToString();
+            textBoxLowGamma.Text = config.LowGamma.ToString();
+            textBoxHighGamma.Text = config.HighGamma.ToString();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            history.Clear();
+            controllerBL.History.Clear();
+        }
+
+        private void Form1_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                checkBoxMl.Checked = false;
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                checkBoxMr.Checked = false;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                checkBoxMu.Checked = false;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                checkBoxMd.Checked = false;
+            }
+        }
+
+        private void Form1_KeyUp_1(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                checkBoxMl.Checked = false;
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                checkBoxMr.Checked = false;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                checkBoxMu.Checked = false;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                checkBoxMd.Checked = false;
+            }
+        }
+
+        private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            Console.WriteLine(e.KeyValue);
+            if (e.KeyCode == Keys.Left)
+            {
+                checkBoxMl.Checked = true;
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                checkBoxMr.Checked = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                checkBoxMu.Checked = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                checkBoxMd.Checked = true;
+            }
         }
     }
 }

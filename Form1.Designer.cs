@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Start = new System.Windows.Forms.Button();
             this.ele = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -56,8 +56,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.att = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.version = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.temp = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.heart = new System.Windows.Forms.Label();
@@ -76,8 +74,6 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.Connect = new System.Windows.Forms.Button();
             this.deviceItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Resync = new System.Windows.Forms.Button();
-            this.controll = new System.Windows.Forms.CheckBox();
             this.textBoxAttention = new System.Windows.Forms.TextBox();
             this.textBoxDelta = new System.Windows.Forms.TextBox();
             this.textBoxMeditation = new System.Windows.Forms.TextBox();
@@ -98,8 +94,6 @@
             this.checkBoxLowAlpha = new System.Windows.Forms.CheckBox();
             this.checkBoxHighGamma = new System.Windows.Forms.CheckBox();
             this.checkBoxLowGamma = new System.Windows.Forms.CheckBox();
-            this.senc = new System.Windows.Forms.TrackBar();
-            this.ResyncInterval = new System.Windows.Forms.TextBox();
             this.IsUseKeySave = new System.Windows.Forms.CheckBox();
             this.keyI = new System.Windows.Forms.TextBox();
             this.keyDown = new System.Windows.Forms.Label();
@@ -118,16 +112,20 @@
             this.textBoxPostfix = new System.Windows.Forms.TextBox();
             this.postfix = new System.Windows.Forms.Label();
             this.ClearButton = new System.Windows.Forms.Button();
+            this.Resync = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.version = new System.Windows.Forms.Label();
+            this.CounterL = new System.Windows.Forms.Label();
+            this.Autouse = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceItemBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.senc)).BeginInit();
             this.SuspendLayout();
             // 
             // Start
             // 
             this.Start.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Start.Location = new System.Drawing.Point(373, 6);
-            this.Start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Start.Margin = new System.Windows.Forms.Padding(2);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(55, 20);
             this.Start.TabIndex = 0;
@@ -389,26 +387,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Attention:";
             // 
-            // version
-            // 
-            this.version.AutoSize = true;
-            this.version.Location = new System.Drawing.Point(997, 2);
-            this.version.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
-            this.version.Name = "version";
-            this.version.Size = new System.Drawing.Size(13, 13);
-            this.version.TabIndex = 25;
-            this.version.Text = "0";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(948, 2);
-            this.label26.Margin = new System.Windows.Forms.Padding(10, 9, 2, 9);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(45, 13);
-            this.label26.TabIndex = 24;
-            this.label26.Text = "Version:";
-            // 
             // temp
             // 
             this.temp.AutoSize = true;
@@ -435,7 +413,7 @@
             // 
             this.heart.AutoSize = true;
             this.heart.ForeColor = System.Drawing.Color.GreenYellow;
-            this.heart.Location = new System.Drawing.Point(566, 359);
+            this.heart.Location = new System.Drawing.Point(552, 359);
             this.heart.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
             this.heart.Name = "heart";
             this.heart.Size = new System.Drawing.Size(13, 13);
@@ -510,30 +488,30 @@
             // 
             // chart1
             // 
-            chartArea2.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisX.MajorTickMark.Enabled = false;
-            chartArea2.AxisY.MajorGrid.Enabled = false;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea2.AxisY.MajorTickMark.Enabled = false;
-            chartArea2.AxisY.Maximum = 2000D;
-            chartArea2.AxisY.Minimum = -2000D;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorTickMark.Enabled = false;
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisY.MajorTickMark.Enabled = false;
+            chartArea1.AxisY.Maximum = 2000D;
+            chartArea1.AxisY.Minimum = -2000D;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.ImeMode = System.Windows.Forms.ImeMode.On;
-            legend2.Alignment = System.Drawing.StringAlignment.Center;
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(681, 22);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            legend1.Alignment = System.Drawing.StringAlignment.Center;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(306, 278);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(342, 163);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(269, 67);
             this.chart1.TabIndex = 36;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -564,11 +542,11 @@
             // 
             this.hrvBox.BackColor = System.Drawing.SystemColors.Desktop;
             this.hrvBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.hrvBox.Location = new System.Drawing.Point(466, 213);
-            this.hrvBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.hrvBox.Location = new System.Drawing.Point(306, 215);
+            this.hrvBox.Margin = new System.Windows.Forms.Padding(2);
             this.hrvBox.Multiline = true;
             this.hrvBox.Name = "hrvBox";
-            this.hrvBox.Size = new System.Drawing.Size(558, 135);
+            this.hrvBox.Size = new System.Drawing.Size(271, 61);
             this.hrvBox.TabIndex = 39;
             this.hrvBox.TextChanged += new System.EventHandler(this.hrvBox_TextChanged);
             // 
@@ -578,7 +556,7 @@
             this.checkBox1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBox1.ForeColor = System.Drawing.Color.GreenYellow;
             this.checkBox1.Location = new System.Drawing.Point(269, 359);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(102, 16);
             this.checkBox1.TabIndex = 41;
@@ -591,7 +569,7 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.ForeColor = System.Drawing.Color.GreenYellow;
             this.checkBox2.Location = new System.Drawing.Point(10, 358);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(36, 17);
             this.checkBox2.TabIndex = 42;
@@ -607,43 +585,22 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 18;
             this.listBox1.Location = new System.Drawing.Point(2, 2);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(369, 40);
+            this.listBox1.Size = new System.Drawing.Size(369, 22);
             this.listBox1.TabIndex = 43;
             // 
             // Connect
             // 
             this.Connect.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Connect.Location = new System.Drawing.Point(373, 30);
-            this.Connect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Connect.Margin = new System.Windows.Forms.Padding(2);
             this.Connect.Name = "Connect";
             this.Connect.Size = new System.Drawing.Size(55, 20);
             this.Connect.TabIndex = 44;
             this.Connect.Text = "Connect";
             this.Connect.UseVisualStyleBackColor = true;
             this.Connect.Click += new System.EventHandler(this.Connect_Click);
-            // 
-            // Resync
-            // 
-            this.Resync.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Resync.Location = new System.Drawing.Point(433, 6);
-            this.Resync.Name = "Resync";
-            this.Resync.Size = new System.Drawing.Size(55, 20);
-            this.Resync.TabIndex = 45;
-            this.Resync.Text = "Resync";
-            this.Resync.UseVisualStyleBackColor = true;
-            this.Resync.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // controll
-            // 
-            this.controll.AutoSize = true;
-            this.controll.Location = new System.Drawing.Point(628, 6);
-            this.controll.Name = "controll";
-            this.controll.Size = new System.Drawing.Size(60, 17);
-            this.controll.TabIndex = 46;
-            this.controll.Text = "controll";
-            this.controll.UseVisualStyleBackColor = true;
             // 
             // textBoxAttention
             // 
@@ -876,28 +833,11 @@
             this.checkBoxLowGamma.Text = "LowGamma";
             this.checkBoxLowGamma.UseVisualStyleBackColor = true;
             // 
-            // senc
-            // 
-            this.senc.Location = new System.Drawing.Point(488, 6);
-            this.senc.Name = "senc";
-            this.senc.Size = new System.Drawing.Size(134, 45);
-            this.senc.TabIndex = 71;
-            // 
-            // ResyncInterval
-            // 
-            this.ResyncInterval.BackColor = System.Drawing.SystemColors.MenuText;
-            this.ResyncInterval.ForeColor = System.Drawing.Color.GreenYellow;
-            this.ResyncInterval.Location = new System.Drawing.Point(499, 39);
-            this.ResyncInterval.Name = "ResyncInterval";
-            this.ResyncInterval.Size = new System.Drawing.Size(100, 20);
-            this.ResyncInterval.TabIndex = 72;
-            this.ResyncInterval.Text = "15";
-            // 
             // IsUseKeySave
             // 
             this.IsUseKeySave.AutoSize = true;
             this.IsUseKeySave.ForeColor = System.Drawing.Color.GreenYellow;
-            this.IsUseKeySave.Location = new System.Drawing.Point(580, 193);
+            this.IsUseKeySave.Location = new System.Drawing.Point(486, 188);
             this.IsUseKeySave.Name = "IsUseKeySave";
             this.IsUseKeySave.Size = new System.Drawing.Size(89, 17);
             this.IsUseKeySave.TabIndex = 73;
@@ -909,7 +849,7 @@
             // 
             this.keyI.BackColor = System.Drawing.SystemColors.MenuText;
             this.keyI.ForeColor = System.Drawing.Color.GreenYellow;
-            this.keyI.Location = new System.Drawing.Point(568, 171);
+            this.keyI.Location = new System.Drawing.Point(411, 166);
             this.keyI.Name = "keyI";
             this.keyI.Size = new System.Drawing.Size(100, 20);
             this.keyI.TabIndex = 74;
@@ -917,7 +857,7 @@
             // keyDown
             // 
             this.keyDown.AutoSize = true;
-            this.keyDown.Location = new System.Drawing.Point(544, 169);
+            this.keyDown.Location = new System.Drawing.Point(387, 164);
             this.keyDown.Name = "keyDown";
             this.keyDown.Size = new System.Drawing.Size(0, 13);
             this.keyDown.TabIndex = 75;
@@ -926,7 +866,7 @@
             // 
             this.IsUseKey.AutoSize = true;
             this.IsUseKey.ForeColor = System.Drawing.Color.GreenYellow;
-            this.IsUseKey.Location = new System.Drawing.Point(488, 193);
+            this.IsUseKey.Location = new System.Drawing.Point(331, 188);
             this.IsUseKey.Name = "IsUseKey";
             this.IsUseKey.Size = new System.Drawing.Size(63, 17);
             this.IsUseKey.TabIndex = 76;
@@ -937,20 +877,19 @@
             // ResynKey
             // 
             this.ResynKey.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ResynKey.Location = new System.Drawing.Point(482, 170);
+            this.ResynKey.Location = new System.Drawing.Point(325, 165);
             this.ResynKey.Name = "ResynKey";
             this.ResynKey.Size = new System.Drawing.Size(73, 20);
             this.ResynKey.TabIndex = 77;
             this.ResynKey.Text = "ResyncKey";
             this.ResynKey.UseVisualStyleBackColor = true;
-            this.ResynKey.Click += new System.EventHandler(this.ResynKey_Click);
             // 
             // checkBoxMu
             // 
             this.checkBoxMu.AutoSize = true;
             this.checkBoxMu.ForeColor = System.Drawing.Color.GreenYellow;
-            this.checkBoxMu.Location = new System.Drawing.Point(528, 108);
-            this.checkBoxMu.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.checkBoxMu.Location = new System.Drawing.Point(371, 103);
+            this.checkBoxMu.Margin = new System.Windows.Forms.Padding(1);
             this.checkBoxMu.Name = "checkBoxMu";
             this.checkBoxMu.Size = new System.Drawing.Size(72, 17);
             this.checkBoxMu.TabIndex = 78;
@@ -961,8 +900,8 @@
             // 
             this.checkBoxMl.AutoSize = true;
             this.checkBoxMl.ForeColor = System.Drawing.Color.GreenYellow;
-            this.checkBoxMl.Location = new System.Drawing.Point(479, 129);
-            this.checkBoxMl.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.checkBoxMl.Location = new System.Drawing.Point(322, 124);
+            this.checkBoxMl.Margin = new System.Windows.Forms.Padding(1);
             this.checkBoxMl.Name = "checkBoxMl";
             this.checkBoxMl.Size = new System.Drawing.Size(74, 17);
             this.checkBoxMl.TabIndex = 79;
@@ -973,8 +912,8 @@
             // 
             this.checkBoxMr.AutoSize = true;
             this.checkBoxMr.ForeColor = System.Drawing.Color.GreenYellow;
-            this.checkBoxMr.Location = new System.Drawing.Point(574, 129);
-            this.checkBoxMr.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.checkBoxMr.Location = new System.Drawing.Point(417, 124);
+            this.checkBoxMr.Margin = new System.Windows.Forms.Padding(1);
             this.checkBoxMr.Name = "checkBoxMr";
             this.checkBoxMr.Size = new System.Drawing.Size(80, 17);
             this.checkBoxMr.TabIndex = 80;
@@ -985,8 +924,8 @@
             // 
             this.checkBoxMd.AutoSize = true;
             this.checkBoxMd.ForeColor = System.Drawing.Color.GreenYellow;
-            this.checkBoxMd.Location = new System.Drawing.Point(532, 151);
-            this.checkBoxMd.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.checkBoxMd.Location = new System.Drawing.Point(375, 146);
+            this.checkBoxMd.Margin = new System.Windows.Forms.Padding(1);
             this.checkBoxMd.Name = "checkBoxMd";
             this.checkBoxMd.Size = new System.Drawing.Size(92, 17);
             this.checkBoxMd.TabIndex = 81;
@@ -997,7 +936,7 @@
             // 
             this.SaveConfig.ForeColor = System.Drawing.Color.Black;
             this.SaveConfig.Location = new System.Drawing.Point(10, 328);
-            this.SaveConfig.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.SaveConfig.Margin = new System.Windows.Forms.Padding(1);
             this.SaveConfig.Name = "SaveConfig";
             this.SaveConfig.Size = new System.Drawing.Size(94, 21);
             this.SaveConfig.TabIndex = 82;
@@ -1008,7 +947,7 @@
             // saveToFileB
             // 
             this.saveToFileB.ForeColor = System.Drawing.Color.Black;
-            this.saveToFileB.Location = new System.Drawing.Point(422, 78);
+            this.saveToFileB.Location = new System.Drawing.Point(308, 78);
             this.saveToFileB.Name = "saveToFileB";
             this.saveToFileB.Size = new System.Drawing.Size(78, 23);
             this.saveToFileB.TabIndex = 83;
@@ -1020,16 +959,17 @@
             // 
             this.userName.BackColor = System.Drawing.SystemColors.MenuText;
             this.userName.ForeColor = System.Drawing.Color.GreenYellow;
-            this.userName.Location = new System.Drawing.Point(835, 3);
+            this.userName.Location = new System.Drawing.Point(44, 46);
             this.userName.Name = "userName";
             this.userName.Size = new System.Drawing.Size(100, 20);
             this.userName.TabIndex = 84;
+            this.userName.Text = "hao";
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
             this.labelName.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelName.Location = new System.Drawing.Point(797, 7);
+            this.labelName.Location = new System.Drawing.Point(4, 47);
             this.labelName.Margin = new System.Windows.Forms.Padding(10, 9, 2, 9);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(33, 13);
@@ -1039,7 +979,7 @@
             // LoadFromFile
             // 
             this.LoadFromFile.ForeColor = System.Drawing.Color.Black;
-            this.LoadFromFile.Location = new System.Drawing.Point(506, 78);
+            this.LoadFromFile.Location = new System.Drawing.Point(394, 78);
             this.LoadFromFile.Name = "LoadFromFile";
             this.LoadFromFile.Size = new System.Drawing.Size(78, 23);
             this.LoadFromFile.TabIndex = 86;
@@ -1063,16 +1003,17 @@
             // 
             this.textBoxPostfix.BackColor = System.Drawing.SystemColors.MenuText;
             this.textBoxPostfix.ForeColor = System.Drawing.Color.GreenYellow;
-            this.textBoxPostfix.Location = new System.Drawing.Point(736, 3);
+            this.textBoxPostfix.Location = new System.Drawing.Point(205, 47);
             this.textBoxPostfix.Name = "textBoxPostfix";
             this.textBoxPostfix.Size = new System.Drawing.Size(58, 20);
             this.textBoxPostfix.TabIndex = 88;
+            this.textBoxPostfix.Text = "0";
             // 
             // postfix
             // 
             this.postfix.AutoSize = true;
             this.postfix.ForeColor = System.Drawing.Color.GreenYellow;
-            this.postfix.Location = new System.Drawing.Point(694, 7);
+            this.postfix.Location = new System.Drawing.Point(165, 49);
             this.postfix.Margin = new System.Windows.Forms.Padding(10, 9, 2, 9);
             this.postfix.Name = "postfix";
             this.postfix.Size = new System.Drawing.Size(37, 13);
@@ -1082,7 +1023,7 @@
             // ClearButton
             // 
             this.ClearButton.ForeColor = System.Drawing.Color.Black;
-            this.ClearButton.Location = new System.Drawing.Point(591, 78);
+            this.ClearButton.Location = new System.Drawing.Point(478, 78);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(78, 23);
             this.ClearButton.TabIndex = 90;
@@ -1091,12 +1032,67 @@
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
+            // Resync
+            // 
+            this.Resync.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Resync.Location = new System.Drawing.Point(433, 6);
+            this.Resync.Name = "Resync";
+            this.Resync.Size = new System.Drawing.Size(55, 20);
+            this.Resync.TabIndex = 45;
+            this.Resync.Text = "Resync";
+            this.Resync.UseVisualStyleBackColor = true;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(492, 10);
+            this.label26.Margin = new System.Windows.Forms.Padding(10, 9, 2, 9);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(45, 13);
+            this.label26.TabIndex = 24;
+            this.label26.Text = "Version:";
+            // 
+            // version
+            // 
+            this.version.AutoSize = true;
+            this.version.Location = new System.Drawing.Point(535, 10);
+            this.version.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
+            this.version.Name = "version";
+            this.version.Size = new System.Drawing.Size(13, 13);
+            this.version.TabIndex = 25;
+            this.version.Text = "0";
+            // 
+            // CounterL
+            // 
+            this.CounterL.AutoSize = true;
+            this.CounterL.ForeColor = System.Drawing.Color.GreenYellow;
+            this.CounterL.Location = new System.Drawing.Point(524, 169);
+            this.CounterL.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
+            this.CounterL.Name = "CounterL";
+            this.CounterL.Size = new System.Drawing.Size(13, 13);
+            this.CounterL.TabIndex = 91;
+            this.CounterL.Text = "0";
+            // 
+            // Autouse
+            // 
+            this.Autouse.AutoSize = true;
+            this.Autouse.ForeColor = System.Drawing.Color.GreenYellow;
+            this.Autouse.Location = new System.Drawing.Point(397, 188);
+            this.Autouse.Name = "Autouse";
+            this.Autouse.Size = new System.Drawing.Size(64, 17);
+            this.Autouse.TabIndex = 92;
+            this.Autouse.Text = "autouse";
+            this.Autouse.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.Autouse.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(1016, 385);
+            this.ClientSize = new System.Drawing.Size(592, 385);
+            this.Controls.Add(this.Autouse);
+            this.Controls.Add(this.CounterL);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.postfix);
             this.Controls.Add(this.textBoxPostfix);
@@ -1115,8 +1111,6 @@
             this.Controls.Add(this.keyDown);
             this.Controls.Add(this.keyI);
             this.Controls.Add(this.IsUseKeySave);
-            this.Controls.Add(this.ResyncInterval);
-            this.Controls.Add(this.senc);
             this.Controls.Add(this.checkBoxHighGamma);
             this.Controls.Add(this.checkBoxLowGamma);
             this.Controls.Add(this.checkBoxHighBeta);
@@ -1137,7 +1131,6 @@
             this.Controls.Add(this.textBoxTheta);
             this.Controls.Add(this.textBoxDelta);
             this.Controls.Add(this.textBoxAttention);
-            this.Controls.Add(this.controll);
             this.Controls.Add(this.Resync);
             this.Controls.Add(this.Connect);
             this.Controls.Add(this.listBox1);
@@ -1184,7 +1177,8 @@
             this.Controls.Add(this.lbeta);
             this.ForeColor = System.Drawing.Color.OliveDrab;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1192,9 +1186,10 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp_1);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceItemBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.senc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1226,8 +1221,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label att;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label version;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label temp;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label heart;
@@ -1245,8 +1238,6 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button Connect;
         private System.Windows.Forms.BindingSource deviceItemBindingSource;
-        private System.Windows.Forms.Button Resync;
-        public System.Windows.Forms.CheckBox controll;
         public System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         public System.Windows.Forms.TextBox textBoxAttention;
         public System.Windows.Forms.TextBox textBoxDelta;
@@ -1268,8 +1259,6 @@
         public System.Windows.Forms.CheckBox checkBoxLowAlpha;
         public System.Windows.Forms.CheckBox checkBoxHighGamma;
         public System.Windows.Forms.CheckBox checkBoxLowGamma;
-        public System.Windows.Forms.TrackBar senc;
-        public System.Windows.Forms.TextBox ResyncInterval;
         public System.Windows.Forms.CheckBox IsUseKeySave;
         public System.Windows.Forms.TextBox keyI;
         public System.Windows.Forms.Label keyDown;
@@ -1288,6 +1277,11 @@
         public System.Windows.Forms.TextBox textBoxPostfix;
         private System.Windows.Forms.Label postfix;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button Resync;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label version;
+        private System.Windows.Forms.Label CounterL;
+        public System.Windows.Forms.CheckBox Autouse;
     }
 }
 
