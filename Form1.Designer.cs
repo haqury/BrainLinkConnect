@@ -124,7 +124,7 @@
             // Start
             // 
             this.Start.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Start.Location = new System.Drawing.Point(373, 6);
+            this.Start.Location = new System.Drawing.Point(354, 6);
             this.Start.Margin = new System.Windows.Forms.Padding(2);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(55, 20);
@@ -587,13 +587,13 @@
             this.listBox1.Location = new System.Drawing.Point(2, 2);
             this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(369, 22);
+            this.listBox1.Size = new System.Drawing.Size(289, 22);
             this.listBox1.TabIndex = 43;
             // 
             // Connect
             // 
             this.Connect.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Connect.Location = new System.Drawing.Point(373, 30);
+            this.Connect.Location = new System.Drawing.Point(295, 6);
             this.Connect.Margin = new System.Windows.Forms.Padding(2);
             this.Connect.Name = "Connect";
             this.Connect.Size = new System.Drawing.Size(55, 20);
@@ -990,7 +990,7 @@
             // loadConfig
             // 
             this.loadConfig.ForeColor = System.Drawing.Color.Black;
-            this.loadConfig.Location = new System.Drawing.Point(133, 328);
+            this.loadConfig.Location = new System.Drawing.Point(111, 328);
             this.loadConfig.Margin = new System.Windows.Forms.Padding(1);
             this.loadConfig.Name = "loadConfig";
             this.loadConfig.Size = new System.Drawing.Size(94, 21);
@@ -1035,7 +1035,7 @@
             // Resync
             // 
             this.Resync.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Resync.Location = new System.Drawing.Point(433, 6);
+            this.Resync.Location = new System.Drawing.Point(466, 40);
             this.Resync.Name = "Resync";
             this.Resync.Size = new System.Drawing.Size(55, 20);
             this.Resync.TabIndex = 45;

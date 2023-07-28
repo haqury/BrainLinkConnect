@@ -180,6 +180,12 @@ namespace BrainLinkConnect
             h.HighBeta = Model.HighBeta;
             h.LowGamma = Model.LowGamma;
             h.HighGamma = Model.HighGamma;
+            try
+            {
+                h.Xvalue = int.Parse(xvalue.Text);
+                h.Yvalue = int.Parse(yvalue.Text);
+                h.Zvalue = int.Parse(zvalue.Text);
+            }
 
             h.EventName = getEventName();
 
