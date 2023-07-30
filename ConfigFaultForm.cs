@@ -11,12 +11,14 @@ using System.Windows.Forms;
 using System.Text.Json;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using ContollerBL.dto;
 
 namespace ConfigBrainLinkForm
 {
     public interface FormWithConfig
     {
         void setConfigFault(EegFaultModel config);
+        EegFaultModel getConfigFault();
     }
 
     public partial class ConfigFaultForm : Form
@@ -26,6 +28,12 @@ namespace ConfigBrainLinkForm
         {
             BaseForm = form;
             InitializeComponent();
+            try
+            {
+                LoadConfigFromConfig(form.getConfigFault());
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -72,7 +80,16 @@ namespace ConfigBrainLinkForm
             try
             {
                 EegFaultModel config = JsonSerializer.Deserialize<EegFaultModel>(jsonString);
-
+                LoadConfigFromConfig(config);
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        private void LoadConfigFromConfig(EegFaultModel config)
+        {
+            try
+            {
                 textBoxAttention.Text = config.Attention.ToString();
                 textBoxMeditation.Text = config.Meditation.ToString();
                 textBoxDelta.Text = config.Delta.ToString();

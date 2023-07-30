@@ -98,12 +98,12 @@ namespace BrainLinkConnect
 
         public static IntPtr hookProc(int code, IntPtr wParam, IntPtr lParam)
         {
-            if (code >= 0 && wParam == (IntPtr)WM_KEYDOWN || code >= 0 && wParam == (IntPtr)260)
+            if (code == 0 && wParam == (IntPtr)WM_KEYDOWN || code == 0 && wParam == (IntPtr)260)
             {
                 int vkCode = Marshal.ReadInt32(lParam); //Получить код клавиши
                 Console.WriteLine(vkCode);
                 baseForm.KeyDown(vkCode);
-            }else if (code >= 0 && wParam == (IntPtr)WM_KEYUP || code >= 0 && wParam == (IntPtr)260)
+            }else if (code == 0 && wParam == (IntPtr)WM_KEYUP || code == 0 && wParam == (IntPtr)260)
             {
                 int vkCode = Marshal.ReadInt32(lParam); //Получить код клавиши
                 Console.WriteLine(vkCode);
@@ -172,10 +172,11 @@ namespace BrainLinkConnect
 
             if (Autouse.Checked == true && h.EventName != "")
             {
-                services.mouse.play(h, config, h.EventName, IsUseKey.Checked);
+                // services.mouse.play(h, config, h.EventName, IsUseKey.Checked);
             } else
             {
-                services.mouse.play(h, config, controllerBL.History.getEventNameBy(h, config), IsUseKey.Checked);
+                // services.mouse.play(h, config, controllerBL.History.getEventNameBy(h, config), IsUseKey.Checked);
+                services.mouse.playKey2(controllerBL.History.getEventNameBy(h, config));
             }
 
             onEEGDataEventChangeTable(Model);

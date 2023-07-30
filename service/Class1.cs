@@ -94,7 +94,7 @@ namespace BrainLinkConnect.service
             if (timer != null) { timer.Dispose(); }
             if (eventName != "" && isUse)
             {
-                timer = new System.Threading.Timer(playKey, eventName, 0, 10);
+                timer = new System.Threading.Timer(playKey2, eventName, 0, 10);
             }
         }
 
@@ -115,6 +115,43 @@ namespace BrainLinkConnect.service
                     Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 1);
                     break;
             }
+        }
+        [DllImport("user32.dll")]
+        static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
+
+        private const int KEYEVENTF_EXTENDEDKEY = 0x0001; // Key down flag
+        private const int KEYEVENTF_KEYUP = 0x0002; // Key up flag
+
+        private const int VK_LEFT = 37;
+        private const int VK_RIGHT = 39;
+        private const int VK_UP = 38;
+        private const int VK_DOWN = 40;
+
+        public void playKey2(object eventMouse)
+        {
+            int time = 1000;
+            switch (eventMouse)
+            {
+                case "ml":
+                    playKeyByKode(VK_LEFT, time);
+                    break;
+                case "mr":
+                    playKeyByKode(VK_RIGHT, time);
+                    break;
+                case "md":
+                    playKeyByKode(VK_UP, time);
+                    break;
+                case "mu":
+                    playKeyByKode(VK_DOWN, time);
+                    break;
+            }
+        }
+
+        private void playKeyByKode(byte code, int time)
+        {
+            keybd_event(code, 1, KEYEVENTF_EXTENDEDKEY, UIntPtr.Zero);
+            System.Threading.Thread.Sleep(time);
+            keybd_event(code, 1, KEYEVENTF_KEYUP, UIntPtr.Zero);
         }
 
     }
