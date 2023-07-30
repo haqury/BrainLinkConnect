@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BrainLinkConnect.service;
+using ConfigBrainLinkForm;
 using ContollerBL;
 using Newtonsoft.Json;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
@@ -15,41 +16,30 @@ namespace ContollerBL.service
     {
         public dto.History History = new dto.History();
 
-        public void load(string path, string postfix)
+        public void load(string path)
         {
-            string filePath = getHistorySavePath(path, postfix);
-            if (!File.Exists(filePath))
+            if (!File.Exists(path))
             {
                 Console.WriteLine("not correct path file");
                 return;
             }
 
-            string jsonString = File.ReadAllText(filePath);
+            string jsonString = File.ReadAllText(path);
             History = JsonConvert.DeserializeObject<dto.History>(jsonString);
             Console.WriteLine("history" + History.Count.ToString());
         }
 
-        public void save(string path, string postfix)
+        public void save(string path)
         {
-            string filePath = getHistorySavePath(path, postfix);
             if (History.Count() == 0)
             {
                 Console.WriteLine("not history");
                 return;
             }
-            using (StreamWriter streamWriter = new StreamWriter(filePath))
+            using (StreamWriter streamWriter = new StreamWriter(path))
             {
                 streamWriter.Write(JsonConvert.SerializeObject(History));
             }
-        }
-
-        private string getHistorySavePath(string path, string postfix)
-        {
-            if (!Directory.Exists(getHistorySaveDir(path)))
-            {
-                Directory.CreateDirectory(getHistorySaveDir(path));
-            }
-            return getHistorySaveDir(path) + "/" + postfix + ".json";
         }
 
         private string getHistorySaveDir(string path)
@@ -67,7 +57,10 @@ namespace ContollerBL.dto
         public string getEventNameBy(EegHistoryModel brainLinkToServiseDto, ConfigParams f)
         {
             var result = this.ToList();
-
+            if (f == null || f.EegFault == null)
+            {
+                return "";
+            }
             if (f.EegFault.Attention != 0)
             {
                 result = result.FindAll(x => (x.Attention <= brainLinkToServiseDto.Attention + f.EegFault.Attention) &&
@@ -184,6 +177,6 @@ namespace ContollerBL.dto
 
     public class ConfigParams
     {
-        public EegHistoryModel EegFault { get; set; }
+        public EegFaultModel EegFault { get; set; }
     }
 }

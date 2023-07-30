@@ -31,11 +31,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using System.Windows.Input;
 using System.Runtime.InteropServices.ComTypes;
 
+using ConfigBrainLinkForm;
 
 
 namespace BrainLinkConnect
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, FormWithConfig, FormWithConnect
     {
         private BrainLinkSDK brainLinkSDK;
         private BrainLinkToServiseDto brainLinkToServiseDto = new BrainLinkToServiseDto();
@@ -44,11 +45,11 @@ namespace BrainLinkConnect
 
         private service.services services = new service.services();
 
+        public ConfigParams config = new ConfigParams();
+
         public int OnEEGDataEventId = 1;
 
-        private float ave = 0;
-
-        private List<int> raw = new List<int>();
+        private EegHistoryModel baseH = new EegHistoryModel();
 
         private List<float> hrvList = new List<float>();
 
@@ -70,7 +71,46 @@ namespace BrainLinkConnect
             private BluetoothClient client = new BluetoothClient();
 
 
-        private string configPath = "config.json";
+        private EEGDataForm EEGDataForm;
+
+
+        [DllImport("user32.dll")]
+        static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc callback, IntPtr hInstance, uint threadId);
+
+        [DllImport("user32.dll")]
+        static extern bool UnhookWindowsHookEx(IntPtr hInstance);
+
+        [DllImport("kernel32.dll")]
+        static extern IntPtr LoadLibrary(string lpFileName);
+
+        private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
+
+        private LowLevelKeyboardProc _proc;
+
+        const int WH_KEYBOARD_LL = 13; // Номер глобального LowLevel-хука на клавиатуру
+        const int
+            WM_KEYDOWN = 0x100,       //Key down
+            WM_KEYUP = 0x101;         //Key up
+
+        private static IntPtr hhook = IntPtr.Zero;
+
+        private static Form1 baseForm;
+
+        public static IntPtr hookProc(int code, IntPtr wParam, IntPtr lParam)
+        {
+            if (code >= 0 && wParam == (IntPtr)WM_KEYDOWN || code >= 0 && wParam == (IntPtr)260)
+            {
+                int vkCode = Marshal.ReadInt32(lParam); //Получить код клавиши
+                Console.WriteLine(vkCode);
+                baseForm.KeyDown(vkCode);
+            }else if (code >= 0 && wParam == (IntPtr)WM_KEYUP || code >= 0 && wParam == (IntPtr)260)
+            {
+                int vkCode = Marshal.ReadInt32(lParam); //Получить код клавиши
+                Console.WriteLine(vkCode);
+                baseForm.KeyUp(vkCode);
+            }
+            return IntPtr.Zero;
+        }
 
         public Form1()
         {
@@ -78,67 +118,21 @@ namespace BrainLinkConnect
 
             InitializeComponent();
 
-
             brainLinkSDK = new BrainLinkSDK();
             brainLinkSDK.OnEEGDataEvent += new BrainLinkSDKEEGDataEvent(BrainLinkSDK_OnEEGDataEvent);
             brainLinkSDK.OnEEGExtendEvent += new BrainLinkSDKEEGExtendDataEvent(BrainLinkSDK_OnEEGExtendDataEvent);
-            brainLinkSDK.OnGyroDataEvent += new BrainLinkSDKGyroDataEvent(BrainLinkSDK_OnGyroDataEvent);
-            brainLinkSDK.OnHRVDataEvent += new BrainLinkSDKHRVDataEvent(BrainLinkSDK_OnHRVDataEvent);
-            brainLinkSDK.OnRawDataEvent += new BrainLinkSDKRawDataEvent(BrainLinkSDK_OnRawDataEvent);
-            brainLinkSDK.OnDeviceFound += new BrainLinkSDKOnDeviceFoundEvent(BrainLinkSDK_OnDeviceFoundEvent);
 
-            KeyPreview = true;
+            baseForm = this;
+            _proc = hookProc;
+            IntPtr hInstance = LoadLibrary("User32");
+            hhook = SetWindowsHookEx(WH_KEYBOARD_LL, _proc, hInstance, 0);
         }
 
-        private void BrainLinkSDK_OnDeviceFoundEvent(long Address, string Name)
+        public void setConfigFault(EegFaultModel config)
         {
-            Debug.WriteLine("Discover name " + Name);
-            listBox1.Items.Add(Name + " : " + Address.ToString("X12"));
-            Devices.Add((Address, Name));
-        }        
-
-        private void BrainLinkSDK_OnRawDataEvent(int Raw)
-        {
-            raw.Add(Raw);
-            if (raw.Count > 512)
-            {
-                raw.Remove(raw[0]);
-            }
-            chart1.Series[0].Points.DataBindY(raw);
+            this.config.EegFault = config;
         }
 
-        private void BrainLinkSDK_OnHRVDataEvent(int[] HRV, int Blink)
-        {
-            for (int i = 0; i < HRV.Length; i++)
-            {
-                hrvBox.Text += HRV[i] + "ms ";
-                hrvList.Add(HRV[i]);
-            }
-            if (hrvList.Count >= 60)
-            {
-                double hrv = StandardDiviation(hrvList.ToArray());
-                lastHRV.Add(hrv);
-                if (lastHRV.Count > 5)
-                {
-                    lastHRV.RemoveAt(0);
-                }
-                string hrvString = "";
-                for (int i = 0; i < lastHRV.Count; i++)
-                {
-                    hrvString += "hrv" + i + ":" + lastHRV[i].ToString("F2");
-                }
-                hrvString += " avg:" + ave.ToString("F2") + " size:" + hrvList.Count;
-                hrvList.Clear();
-                hrvBox.Text = "";
-            }
-        }
-
-        private void BrainLinkSDK_OnGyroDataEvent(int X, int Y, int Z)
-        {
-            xvalue.Text = X.ToString();
-            yvalue.Text = Y.ToString();
-            zvalue.Text = Z.ToString();
-        }
 
         private void BrainLinkSDK_OnEEGExtendDataEvent(BrainLinkExtendModel Model)
         {
@@ -152,17 +146,10 @@ namespace BrainLinkConnect
 
         private void Start_Click(object sender, EventArgs e)
         {
-            Debug.WriteLine("Click");
             brainLinkSDK.Start();
-
-            var peers = client.DiscoverDevices();
-            foreach (var peer in peers)
-            {
-                devices.Add(peer);
-            }
-
-            listBox1.Items.Clear();
-            Devices.Clear();
+            ConnectForm formConn = new ConnectForm(this);
+            formConn.Show();
+            brainLinkSDK.OnDeviceFound = new BrainLinkSDKOnDeviceFoundEvent(formConn.BrainLinkSDK_OnDeviceFoundEvent);
         }
 
         private void BrainLinkSDK_OnEEGDataEvent(BrainLinkModel Model)
@@ -180,18 +167,8 @@ namespace BrainLinkConnect
             h.HighBeta = Model.HighBeta;
             h.LowGamma = Model.LowGamma;
             h.HighGamma = Model.HighGamma;
-            try
-            {
-                h.Xvalue = int.Parse(xvalue.Text);
-                h.Yvalue = int.Parse(yvalue.Text);
-                h.Zvalue = int.Parse(zvalue.Text);
-            }
 
             h.EventName = getEventName();
-
-            EegHistoryModel fault = GetConfigFault();
-            ConfigParams config = new ConfigParams();
-            config.EegFault = fault;
 
             if (Autouse.Checked == true && h.EventName != "")
             {
@@ -215,35 +192,9 @@ namespace BrainLinkConnect
             // udpClient.SendAsync(buffer, buffer.Length, "127.0.0.1", 1234);
         }
 
-        private EegHistoryModel GetConfigFault()
-        {
-            EegHistoryModel config = new EegHistoryModel();
-            try
-            {
-                config.Attention = int.Parse(this.textBoxAttention.Text);
-                config.Meditation = int.Parse(this.textBoxMeditation.Text);
-                config.Delta = int.Parse(this.textBoxDelta.Text);
-                config.Theta = int.Parse(this.textBoxTheta.Text);
-                config.LowAlpha = int.Parse(this.textBoxLowAlpha.Text);
-                config.HighAlpha = int.Parse(this.textBoxHighAlpha.Text);
-                config.LowBeta = int.Parse(this.textBoxLowBeta.Text);
-                config.HighBeta = int.Parse(this.textBoxHighBeta.Text);
-                config.LowGamma = int.Parse(this.textBoxLowGamma.Text);
-                config.HighGamma = int.Parse(this.textBoxHighGamma.Text);
-            } catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            return config;
-        }
-
         private string getEventName()
         {
-            if (IsUseKeySave.Checked)
-            {
-               return keyI.Text;
-            }
-            else if (checkBoxMl.Checked)
+            if (checkBoxMl.Checked)
             {
                 return "ml";
             }
@@ -265,17 +216,10 @@ namespace BrainLinkConnect
 
         private void onEEGDataEventChangeTable(BrainLinkModel Model)
         {
-            att.Text = Model.Attention.ToString();
-            med.Text = Model.Meditation.ToString();
-            delta.Text = Model.Delta.ToString();
-            theta.Text = Model.Theta.ToString();
-            lalpha.Text = Model.LowAlpha.ToString();
-            halpha.Text = Model.HighAlpha.ToString();
-            lbeta.Text = Model.LowBeta.ToString();
-            hbeta.Text = Model.HighBeta.ToString();
-            lgamma.Text = Model.LowGamma.ToString();
-            hgamma.Text = Model.HighGamma.ToString();
-            signal.Text = Model.Signal.ToString();
+            if (EEGDataForm != null)
+            {
+                EEGDataForm.BrainLinkSDK_OnEEGDataEvent(Model);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -286,106 +230,41 @@ namespace BrainLinkConnect
 
         }
 
-        private double StandardDiviation(float[] x)
-        {
-            ave = x.Average();
-            double dVar = 0;
-            for (int i = 0; i < x.Length; i++)
-            {
-                dVar += (x[i] - ave) * (x[i] - ave);
-            }
-            return Math.Sqrt(dVar / x.Length);
-        }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             brainLinkSDK.SetApEnable(checkBox1.Checked);
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            brainLinkSDK.SetGyroEnable(checkBox2.Checked);
-        }
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            UnhookWindowsHookEx(hhook); //Остановить хук
             brainLinkSDK.Close();
             udpClient.Close();
             udpServer.Close();
             brainLinkSDK = null;
             Dispose();
             Application.Exit();
+
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
         }
 
-        private void Connect_Click(object sender, EventArgs e)
+        public void connect(long Address)
         {
-            if (listBox1.SelectedIndex < Devices.Count)
-            {
-                (long, string) Device = Devices[listBox1.SelectedIndex];
-                brainLinkSDK.connect(Device.Item1);
-            }
-        }
-
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lgamma_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void hrvBox_TextChanged(object sender, EventArgs e)
-        {
-
+            brainLinkSDK.connect(Address);
         }
 
         private void saveToFileB_Click(object sender, EventArgs e)
         {
-
-            controllerBL.save(userName.Text, textBoxPostfix.Text);
+            controllerBL.save(FilePath.Text);
         }
 
         private void LoadFromFile_Click(object sender, EventArgs e)
         {
-            controllerBL.load(userName.Text, textBoxPostfix.Text);
+            controllerBL.load(FilePath.Text);
             CounterL.Text = controllerBL.History.Count().ToString();
-        }
-
-        private void SaveConfig_Click(object sender, EventArgs e)
-        {
-            EegHistoryModel config = GetConfigFault();
-            using (StreamWriter streamWriter = new StreamWriter(configPath))
-            {
-                streamWriter.Write(JsonConvert.SerializeObject(config));
-            }
-        }
-
-        private async void loadConfig_Click(object sender, EventArgs e)
-        {
-            string jsonString = File.ReadAllText(configPath);
-            EegHistoryModel config = JsonConvert.DeserializeObject<EegHistoryModel>(jsonString);
-
-            textBoxAttention.Text = config.Attention.ToString();
-            textBoxMeditation.Text = config.Meditation.ToString();
-            textBoxDelta.Text = config.Delta.ToString();
-            textBoxTheta.Text = config.Theta.ToString();
-            textBoxLowAlpha.Text = config.LowAlpha.ToString();
-            textBoxHighAlpha.Text = config.HighAlpha.ToString();
-            textBoxLowBeta.Text = config.LowBeta.ToString();
-            textBoxHighBeta.Text = config.HighBeta.ToString();
-            textBoxLowGamma.Text = config.LowGamma.ToString();
-            textBoxHighGamma.Text = config.HighGamma.ToString();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -393,65 +272,104 @@ namespace BrainLinkConnect
             controllerBL.History.Clear();
         }
 
-        private void Form1_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Left)
-            {
-                checkBoxMl.Checked = false;
-            }
-            if (e.KeyCode == Keys.Right)
-            {
-                checkBoxMr.Checked = false;
-            }
-            if (e.KeyCode == Keys.Up)
-            {
-                checkBoxMu.Checked = false;
-            }
-            if (e.KeyCode == Keys.Down)
-            {
-                checkBoxMd.Checked = false;
-            }
-        }
+        private const int VK_LEFT = 37;
+        private const int VK_RIGHT = 39;
+        private const int VK_UP = 38;
+        private const int VK_DOWN = 40;
 
-        private void Form1_KeyUp_1(object sender, System.Windows.Forms.KeyEventArgs e)
+        public void KeyDown(int m)
         {
-            if (e.KeyCode == Keys.Left)
-            {
-                checkBoxMl.Checked = false;
-            }
-            if (e.KeyCode == Keys.Right)
-            {
-                checkBoxMr.Checked = false;
-            }
-            if (e.KeyCode == Keys.Up)
-            {
-                checkBoxMu.Checked = false;
-            }
-            if (e.KeyCode == Keys.Down)
-            {
-                checkBoxMd.Checked = false;
-            }
-        }
-
-        private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
-        {
-            Console.WriteLine(e.KeyValue);
-            if (e.KeyCode == Keys.Left)
+            if (m == VK_LEFT)
             {
                 checkBoxMl.Checked = true;
             }
-            if (e.KeyCode == Keys.Right)
+            else if (m == VK_RIGHT)
             {
                 checkBoxMr.Checked = true;
             }
-            if (e.KeyCode == Keys.Up)
+            else if (m == VK_UP)
             {
                 checkBoxMu.Checked = true;
             }
-            if (e.KeyCode == Keys.Down)
+            else if (m == VK_DOWN)
             {
                 checkBoxMd.Checked = true;
             }
+        }
+
+        public void KeyUp(int m)
+        {
+            if (m == VK_LEFT)
+            {
+                checkBoxMl.Checked = false;
+            }
+            else if (m == VK_RIGHT)
+            {
+                checkBoxMr.Checked = false;
+            }
+            else if (m == VK_UP)
+            {
+                checkBoxMu.Checked = false;
+            }
+            else if (m == VK_DOWN)
+            {
+                checkBoxMd.Checked = false;
+            }
+        }
+
+        private void ConfigFault_Click(object sender, EventArgs e)
+        {
+            ConfigFaultForm newForm = new ConfigFaultForm(this);
+            newForm.Show();
+        }
+
+        private void EEGDataButton_Click(object sender, EventArgs e)
+        {
+            if (EEGDataForm == null)
+            {
+                EEGDataForm = new EEGDataForm();
+                EEGDataForm.Show();
+            }
+        }
+
+        private void BrowseB_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.InitialDirectory = @"C:\BLconfig";
+            openFile.Title = "Browse Json Files Only";
+            openFile.Filter = "Json Files Only (*.json) | *.json";
+            openFile.DefaultExt = "json";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                FilePath.Text = openFile.FileName;
+            }
+        }
+
+        private void HRVView_Click(object sender, EventArgs e)
+        {
+            HRVForm hrv = new HRVForm();
+            hrv.Show();
+
+            brainLinkSDK.OnHRVDataEvent = new BrainLinkSDKHRVDataEvent(hrv.BrainLinkSDK_OnHRVDataEvent);
+        }
+
+        private void Gyro_Click(object sender, EventArgs e)
+        {
+            GyroForm fg = new GyroForm();
+            fg.Show();
+
+            brainLinkSDK.OnGyroDataEvent += new BrainLinkSDKGyroDataEvent(fg.BrainLinkSDK_OnGyroDataEvent);
+
+            brainLinkSDK.SetGyroEnable(true);
+        }
+
+        private void Diagram_Click(object sender, EventArgs e)
+        {
+            StateForm stateForm = new StateForm();
+            stateForm.Show();
+
+            brainLinkSDK.OnRawDataEvent += new BrainLinkSDKRawDataEvent(stateForm.BrainLinkSDK_OnRawDataEvent);
+
         }
     }
 }
