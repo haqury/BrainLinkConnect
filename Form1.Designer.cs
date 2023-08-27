@@ -379,7 +379,7 @@
             this.FilePath.Name = "FilePath";
             this.FilePath.Size = new System.Drawing.Size(157, 20);
             this.FilePath.TabIndex = 165;
-            this.FilePath.Text = "C:\\Users\\haqur\\OneDrive\\Документы\\hao\\";
+            this.FilePath.Text = "C:\\Users\\haqur\\hao\\pro2.json";
             // 
             // HRVView
             // 

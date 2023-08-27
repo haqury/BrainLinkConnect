@@ -311,7 +311,7 @@
             this.FilePath.Name = "FilePath";
             this.FilePath.Size = new System.Drawing.Size(157, 20);
             this.FilePath.TabIndex = 163;
-            this.FilePath.Text = "C:\\Users\\haqur\\OneDrive\\Документы\\hao\\proConfig.json";
+            this.FilePath.Text = "C:\\Users\\haqur\\hao\\proConfig.json";
             this.FilePath.TextChanged += new System.EventHandler(this.FilePath_TextChanged);
             // 
             // fileSystemWatcher1
