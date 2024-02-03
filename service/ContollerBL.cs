@@ -8,7 +8,7 @@ using BrainLinkConnect.service;
 using ConfigBrainLinkForm;
 using ContollerBL;
 using Newtonsoft.Json;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Net.Http;
 
 namespace ContollerBL.service
 {
@@ -45,6 +45,102 @@ namespace ContollerBL.service
         private string getHistorySaveDir(string path)
         {
             return path + "/";
+        }
+    }
+    
+    
+// Define a class to represent the response structure
+    public class ResponseModel
+    {
+        public string EventName { get; set; }
+    }
+    
+    public class DataSender
+    {
+        private readonly HttpClient _client;
+
+        public DataSender()
+        {
+            _client = new HttpClient();
+            // Установите базовый URL, если он будет одинаковым для всех запросов
+            _client.BaseAddress = new Uri("http://127.0.0.1:5000"); // Замените на адрес вашего сервера Flask
+        }
+
+        public async Task<string> SendDataGetAsync(object data)
+        {
+            // Преобразование объекта в JSON для отправки на сервер
+            var json = JsonConvert.SerializeObject(data);
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+            // Отправка POST-запроса на /get эндпоинт
+            HttpResponseMessage response = await _client.PostAsync("/get", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseContent = await response.Content.ReadAsStringAsync();
+
+                // Deserialize the JSON response
+                var responseObject = JsonConvert.DeserializeObject<ResponseModel>(responseContent);
+
+                // Access the predicted EventName
+                return responseObject.EventName;
+
+            }
+            else
+            {
+                return $"Error: {response.StatusCode}";
+            }
+        }
+        
+        public string SendDataGet(object data)
+        {
+            try
+            {
+                // Преобразование объекта в JSON для отправки на сервер
+                var json = JsonConvert.SerializeObject(data);
+                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                // Отправка POST-запроса на /get эндпоинт и блокировка выполнения
+                HttpResponseMessage response = _client.PostAsync("/get", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseContent = response.Content.ReadAsStringAsync().Result;
+
+                    // Deserialize the JSON response
+                    var responseObject = JsonConvert.DeserializeObject<ResponseModel>(responseContent);
+
+                    // Access the predicted EventName
+                    return responseObject.EventName;
+                }
+                else
+                {
+                    return $"Error: {response.StatusCode}";
+                }
+            }
+            catch (Exception ex)
+            {
+                return $"Error: {ex.Message}";
+            }
+        }
+
+        public async Task<string> SendDataSetAsync(object data)
+        {
+            // Преобразование объекта в JSON для отправки на сервер
+            var json = JsonConvert.SerializeObject(data);
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+            // Отправка POST-запроса на /set эндпоинт
+            var response = await _client.PostAsync("/set", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+            else
+            {
+                return $"Error: {response.StatusCode}";
+            }
         }
     }
 }

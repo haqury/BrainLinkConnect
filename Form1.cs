@@ -17,8 +17,6 @@ using System.Net;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using ContollerBL.dto;
-
-
 using InTheHand.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,21 +25,22 @@ using BrainLinkConnect.service;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
-
 using System.Windows.Input;
 using System.Runtime.InteropServices.ComTypes;
-
 using ConfigBrainLinkForm;
+using System.Net.Http;
 
 
 namespace BrainLinkConnect
 {
+    
     public partial class Form1 : Form, FormWithConfig, FormWithConnect
     {
         private BrainLinkSDK brainLinkSDK;
         private BrainLinkToServiseDto brainLinkToServiseDto = new BrainLinkToServiseDto();
 
         private ContollerBL.service.ContollerBL controllerBL = new ContollerBL.service.ContollerBL();
+        private ContollerBL.service.DataSender DataSender = new ContollerBL.service.DataSender();
 
         private service.services services = new service.services();
 
@@ -68,14 +67,15 @@ namespace BrainLinkConnect
         private MemoryStream ms = new MemoryStream();
 
         private List<BluetoothDeviceInfo> devices = new List<BluetoothDeviceInfo>();
-            private BluetoothClient client = new BluetoothClient();
+        private BluetoothClient client = new BluetoothClient();
 
 
         private EEGDataForm EEGDataForm;
 
 
         [DllImport("user32.dll")]
-        static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc callback, IntPtr hInstance, uint threadId);
+        static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc callback, IntPtr hInstance,
+            uint threadId);
 
         [DllImport("user32.dll")]
         static extern bool UnhookWindowsHookEx(IntPtr hInstance);
@@ -88,9 +88,10 @@ namespace BrainLinkConnect
         private LowLevelKeyboardProc _proc;
 
         const int WH_KEYBOARD_LL = 13; // Номер глобального LowLevel-хука на клавиатуру
+
         const int
-            WM_KEYDOWN = 0x100,       //Key down
-            WM_KEYUP = 0x101;         //Key up
+            WM_KEYDOWN = 0x100, //Key down
+            WM_KEYUP = 0x101; //Key up
 
         private static IntPtr hhook = IntPtr.Zero;
 
@@ -103,12 +104,14 @@ namespace BrainLinkConnect
                 int vkCode = Marshal.ReadInt32(lParam); //Получить код клавиши
                 Console.WriteLine(vkCode);
                 baseForm.KeyDown(vkCode);
-            }else if (code >= 0 && wParam == (IntPtr)WM_KEYUP || code >= 0 && wParam == (IntPtr)260)
+            }
+            else if (code >= 0 && wParam == (IntPtr)WM_KEYUP || code >= 0 && wParam == (IntPtr)260)
             {
                 int vkCode = Marshal.ReadInt32(lParam); //Получить код клавиши
                 Console.WriteLine(vkCode);
                 baseForm.KeyUp(vkCode);
             }
+
             return IntPtr.Zero;
         }
 
@@ -173,9 +176,21 @@ namespace BrainLinkConnect
             if (Autouse.Checked == true && h.EventName != "")
             {
                 services.mouse.play(h, config, h.EventName, IsUseKey.Checked);
-            } else
+            }
+            else
             {
-                services.mouse.play(h, config, controllerBL.History.getEventNameBy(h, config), IsUseKey.Checked);
+                
+                var json = JsonConvert.SerializeObject(h);
+                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                // Отправка данных на сервер методом SendDataGetAsync
+                Console.WriteLine(json);
+                var getResult = DataSender.SendDataGet(json);
+                
+
+                Console.WriteLine("Response from /get:");
+                Console.WriteLine(getResult);
+                services.mouse.play(h, config, getResult, IsUseKey.Checked);
             }
 
             onEEGDataEventChangeTable(Model);
@@ -210,6 +225,7 @@ namespace BrainLinkConnect
             {
                 return "md";
             }
+
             return "";
         }
 
@@ -227,7 +243,6 @@ namespace BrainLinkConnect
             KeyPreview = true;
             //Debug.WriteLine("Click");
             //brainLinkSDK.Start();
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -244,7 +259,6 @@ namespace BrainLinkConnect
             brainLinkSDK = null;
             Dispose();
             Application.Exit();
-
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -259,6 +273,12 @@ namespace BrainLinkConnect
         private void saveToFileB_Click(object sender, EventArgs e)
         {
             controllerBL.save(FilePath.Text);
+            var json = JsonConvert.SerializeObject(controllerBL.History);
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+            var setDataResult = DataSender.SendDataSetAsync(json);
+            Console.WriteLine("Response from /set:");
+            Console.WriteLine(setDataResult);
         }
 
         private void LoadFromFile_Click(object sender, EventArgs e)
@@ -369,7 +389,6 @@ namespace BrainLinkConnect
             stateForm.Show();
 
             brainLinkSDK.OnRawDataEvent += new BrainLinkSDKRawDataEvent(stateForm.BrainLinkSDK_OnRawDataEvent);
-
         }
     }
 }

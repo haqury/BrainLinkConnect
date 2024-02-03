@@ -34,3 +34,44 @@ D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLi
 D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\bin\Debug\wclCommunication.dll
 D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.CopyComplete
 D:\BaiduNetdiskDownload\james\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkSDK_Windows_Visual Studio_202207A\BrainLinkDemo_source code\BrainLinkConnect\bin\Debug\BrainLinkSDK_Windows.pdb
+C:\Users\haqur\BrainLinkConnect\bin\Debug\BrainLinkConnect.exe.config
+C:\Users\haqur\BrainLinkConnect\bin\Debug\BrainLinkConnect.exe
+C:\Users\haqur\BrainLinkConnect\bin\Debug\BrainLinkConnect.pdb
+C:\Users\haqur\BrainLinkConnect\bin\Debug\InTheHand.Net.Bluetooth.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\Newtonsoft.Json.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Buffers.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Memory.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Text.Json.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.ValueTuple.dll
+C:\Users\haqur\BrainLinkConnect\bin\Debug\BrainLinkSDK_Windows.pdb
+C:\Users\haqur\BrainLinkConnect\bin\Debug\InTheHand.Net.Bluetooth.xml
+C:\Users\haqur\BrainLinkConnect\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\haqur\BrainLinkConnect\bin\Debug\Newtonsoft.Json.xml
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Buffers.xml
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Memory.xml
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Text.Json.xml
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\haqur\BrainLinkConnect\bin\Debug\System.ValueTuple.xml
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.AssemblyReference.cache
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.SuggestedBindingRedirects.cache
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.ConnectForm.resources
+C:\Users\haqur\BrainLinkConnect\obj\Debug\ConfigBrainLinkForm.ConfigFaultForm.resources
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.EEGDataForm.resources
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.Form1.resources
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.GyroForm.resources
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.HRVForm.resources
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.Properties.Resources.resources
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.StateForm.resources
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.GenerateResource.cache
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.CoreCompileInputs.cache
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.csproj.CopyComplete
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.exe
+C:\Users\haqur\BrainLinkConnect\obj\Debug\BrainLinkConnect.pdb
