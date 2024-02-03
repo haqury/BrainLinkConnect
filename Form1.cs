@@ -285,6 +285,11 @@ namespace BrainLinkConnect
         {
             controllerBL.load(FilePath.Text);
             CounterL.Text = controllerBL.History.Count().ToString();
+            
+            var json = JsonConvert.SerializeObject(controllerBL.History);
+            var setDataResult = DataSender.SendDataSetAsync(json);
+            Console.WriteLine("Response from /set:");
+            Console.WriteLine(setDataResult);
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
