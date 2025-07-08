@@ -210,6 +210,11 @@ namespace BrainLinkConnect
             {
                 return "md";
             }
+
+            else if (checkBoxStop.Checked)
+            {
+                return "stop";
+            }
             return "";
         }
 

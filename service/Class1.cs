@@ -92,7 +92,7 @@ namespace BrainLinkConnect.service
         public void play(EegHistoryModel brainLinkToServiseDto, ConfigParams conf, string eventName, bool isUse)
         {
             if (timer != null) { timer.Dispose(); }
-            if (eventName != "" && isUse)
+            if (eventName != "" && eventName != "stop" && isUse)
             {
                 timer = new System.Threading.Timer(playKey, eventName, 0, 10);
             }
