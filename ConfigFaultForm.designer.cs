@@ -54,6 +54,17 @@
             this.FilePath = new System.Windows.Forms.TextBox();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.BrowseB = new System.Windows.Forms.Button();
+            this.textBoxHighGammaX = new System.Windows.Forms.TextBox();
+            this.textBoxLowGammaX = new System.Windows.Forms.TextBox();
+            this.textBoxHighBetaX = new System.Windows.Forms.TextBox();
+            this.textBoxLowBetaX = new System.Windows.Forms.TextBox();
+            this.textBoxHighAlphaX = new System.Windows.Forms.TextBox();
+            this.textBoxLowAlphaX = new System.Windows.Forms.TextBox();
+            this.textBoxMeditationX = new System.Windows.Forms.TextBox();
+            this.textBoxThetaX = new System.Windows.Forms.TextBox();
+            this.textBoxDeltaX = new System.Windows.Forms.TextBox();
+            this.textBoxAttentionX = new System.Windows.Forms.TextBox();
+            this.textBoxMultiCount = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,7 +98,7 @@
             this.textBoxHighGamma.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBoxHighGamma.Location = new System.Drawing.Point(100, 281);
             this.textBoxHighGamma.Name = "textBoxHighGamma";
-            this.textBoxHighGamma.Size = new System.Drawing.Size(100, 20);
+            this.textBoxHighGamma.Size = new System.Drawing.Size(52, 20);
             this.textBoxHighGamma.TabIndex = 155;
             this.textBoxHighGamma.Text = "600";
             // 
@@ -97,7 +108,7 @@
             this.textBoxLowGamma.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBoxLowGamma.Location = new System.Drawing.Point(100, 254);
             this.textBoxLowGamma.Name = "textBoxLowGamma";
-            this.textBoxLowGamma.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLowGamma.Size = new System.Drawing.Size(52, 20);
             this.textBoxLowGamma.TabIndex = 154;
             this.textBoxLowGamma.Text = "600";
             // 
@@ -107,7 +118,7 @@
             this.textBoxHighBeta.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBoxHighBeta.Location = new System.Drawing.Point(100, 228);
             this.textBoxHighBeta.Name = "textBoxHighBeta";
-            this.textBoxHighBeta.Size = new System.Drawing.Size(100, 20);
+            this.textBoxHighBeta.Size = new System.Drawing.Size(52, 20);
             this.textBoxHighBeta.TabIndex = 153;
             this.textBoxHighBeta.Text = "600";
             // 
@@ -117,7 +128,7 @@
             this.textBoxLowBeta.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBoxLowBeta.Location = new System.Drawing.Point(100, 202);
             this.textBoxLowBeta.Name = "textBoxLowBeta";
-            this.textBoxLowBeta.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLowBeta.Size = new System.Drawing.Size(52, 20);
             this.textBoxLowBeta.TabIndex = 152;
             this.textBoxLowBeta.Text = "600";
             // 
@@ -127,7 +138,7 @@
             this.textBoxHighAlpha.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBoxHighAlpha.Location = new System.Drawing.Point(100, 177);
             this.textBoxHighAlpha.Name = "textBoxHighAlpha";
-            this.textBoxHighAlpha.Size = new System.Drawing.Size(100, 20);
+            this.textBoxHighAlpha.Size = new System.Drawing.Size(52, 20);
             this.textBoxHighAlpha.TabIndex = 151;
             this.textBoxHighAlpha.Text = "600";
             // 
@@ -137,7 +148,7 @@
             this.textBoxLowAlpha.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBoxLowAlpha.Location = new System.Drawing.Point(99, 153);
             this.textBoxLowAlpha.Name = "textBoxLowAlpha";
-            this.textBoxLowAlpha.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLowAlpha.Size = new System.Drawing.Size(52, 20);
             this.textBoxLowAlpha.TabIndex = 150;
             this.textBoxLowAlpha.Text = "600";
             // 
@@ -147,7 +158,7 @@
             this.textBoxMeditation.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBoxMeditation.Location = new System.Drawing.Point(99, 78);
             this.textBoxMeditation.Name = "textBoxMeditation";
-            this.textBoxMeditation.Size = new System.Drawing.Size(100, 20);
+            this.textBoxMeditation.Size = new System.Drawing.Size(52, 20);
             this.textBoxMeditation.TabIndex = 149;
             this.textBoxMeditation.Text = "10";
             // 
@@ -157,7 +168,7 @@
             this.textBoxTheta.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBoxTheta.Location = new System.Drawing.Point(99, 127);
             this.textBoxTheta.Name = "textBoxTheta";
-            this.textBoxTheta.Size = new System.Drawing.Size(100, 20);
+            this.textBoxTheta.Size = new System.Drawing.Size(52, 20);
             this.textBoxTheta.TabIndex = 148;
             this.textBoxTheta.Text = "5000";
             // 
@@ -167,7 +178,7 @@
             this.textBoxDelta.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBoxDelta.Location = new System.Drawing.Point(99, 104);
             this.textBoxDelta.Name = "textBoxDelta";
-            this.textBoxDelta.Size = new System.Drawing.Size(100, 20);
+            this.textBoxDelta.Size = new System.Drawing.Size(52, 20);
             this.textBoxDelta.TabIndex = 147;
             this.textBoxDelta.Text = "5000";
             // 
@@ -177,7 +188,7 @@
             this.textBoxAttention.ForeColor = System.Drawing.Color.PaleGreen;
             this.textBoxAttention.Location = new System.Drawing.Point(99, 52);
             this.textBoxAttention.Name = "textBoxAttention";
-            this.textBoxAttention.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAttention.Size = new System.Drawing.Size(52, 20);
             this.textBoxAttention.TabIndex = 146;
             this.textBoxAttention.Text = "5";
             // 
@@ -311,7 +322,7 @@
             this.FilePath.Name = "FilePath";
             this.FilePath.Size = new System.Drawing.Size(157, 20);
             this.FilePath.TabIndex = 163;
-            this.FilePath.Text = "C:\\BLconfig\\user1.json";
+            this.FilePath.Text = "C:\\BLconfig\\config.json";
             this.FilePath.TextChanged += new System.EventHandler(this.FilePath_TextChanged);
             // 
             // fileSystemWatcher1
@@ -322,7 +333,7 @@
             // BrowseB
             // 
             this.BrowseB.ForeColor = System.Drawing.Color.Black;
-            this.BrowseB.Location = new System.Drawing.Point(173, 11);
+            this.BrowseB.Location = new System.Drawing.Point(173, 12);
             this.BrowseB.Margin = new System.Windows.Forms.Padding(1);
             this.BrowseB.Name = "BrowseB";
             this.BrowseB.Size = new System.Drawing.Size(54, 21);
@@ -331,12 +342,133 @@
             this.BrowseB.UseVisualStyleBackColor = true;
             this.BrowseB.Click += new System.EventHandler(this.BrowseB_Click);
             // 
+            // textBoxHighGammaX
+            // 
+            this.textBoxHighGammaX.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxHighGammaX.ForeColor = System.Drawing.Color.GreenYellow;
+            this.textBoxHighGammaX.Location = new System.Drawing.Point(158, 281);
+            this.textBoxHighGammaX.Name = "textBoxHighGammaX";
+            this.textBoxHighGammaX.Size = new System.Drawing.Size(52, 20);
+            this.textBoxHighGammaX.TabIndex = 174;
+            this.textBoxHighGammaX.Text = "10";
+            // 
+            // textBoxLowGammaX
+            // 
+            this.textBoxLowGammaX.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxLowGammaX.ForeColor = System.Drawing.Color.GreenYellow;
+            this.textBoxLowGammaX.Location = new System.Drawing.Point(158, 254);
+            this.textBoxLowGammaX.Name = "textBoxLowGammaX";
+            this.textBoxLowGammaX.Size = new System.Drawing.Size(52, 20);
+            this.textBoxLowGammaX.TabIndex = 173;
+            this.textBoxLowGammaX.Text = "10";
+            // 
+            // textBoxHighBetaX
+            // 
+            this.textBoxHighBetaX.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxHighBetaX.ForeColor = System.Drawing.Color.GreenYellow;
+            this.textBoxHighBetaX.Location = new System.Drawing.Point(158, 228);
+            this.textBoxHighBetaX.Name = "textBoxHighBetaX";
+            this.textBoxHighBetaX.Size = new System.Drawing.Size(52, 20);
+            this.textBoxHighBetaX.TabIndex = 172;
+            this.textBoxHighBetaX.Text = "10";
+            // 
+            // textBoxLowBetaX
+            // 
+            this.textBoxLowBetaX.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxLowBetaX.ForeColor = System.Drawing.Color.GreenYellow;
+            this.textBoxLowBetaX.Location = new System.Drawing.Point(158, 202);
+            this.textBoxLowBetaX.Name = "textBoxLowBetaX";
+            this.textBoxLowBetaX.Size = new System.Drawing.Size(52, 20);
+            this.textBoxLowBetaX.TabIndex = 171;
+            this.textBoxLowBetaX.Text = "10";
+            // 
+            // textBoxHighAlphaX
+            // 
+            this.textBoxHighAlphaX.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxHighAlphaX.ForeColor = System.Drawing.Color.GreenYellow;
+            this.textBoxHighAlphaX.Location = new System.Drawing.Point(158, 177);
+            this.textBoxHighAlphaX.Name = "textBoxHighAlphaX";
+            this.textBoxHighAlphaX.Size = new System.Drawing.Size(52, 20);
+            this.textBoxHighAlphaX.TabIndex = 170;
+            this.textBoxHighAlphaX.Text = "10";
+            // 
+            // textBoxLowAlphaX
+            // 
+            this.textBoxLowAlphaX.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxLowAlphaX.ForeColor = System.Drawing.Color.GreenYellow;
+            this.textBoxLowAlphaX.Location = new System.Drawing.Point(157, 153);
+            this.textBoxLowAlphaX.Name = "textBoxLowAlphaX";
+            this.textBoxLowAlphaX.Size = new System.Drawing.Size(52, 20);
+            this.textBoxLowAlphaX.TabIndex = 169;
+            this.textBoxLowAlphaX.Text = "10";
+            // 
+            // textBoxMeditationX
+            // 
+            this.textBoxMeditationX.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxMeditationX.ForeColor = System.Drawing.Color.GreenYellow;
+            this.textBoxMeditationX.Location = new System.Drawing.Point(157, 78);
+            this.textBoxMeditationX.Name = "textBoxMeditationX";
+            this.textBoxMeditationX.Size = new System.Drawing.Size(52, 20);
+            this.textBoxMeditationX.TabIndex = 168;
+            this.textBoxMeditationX.Text = "1";
+            // 
+            // textBoxThetaX
+            // 
+            this.textBoxThetaX.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxThetaX.ForeColor = System.Drawing.Color.GreenYellow;
+            this.textBoxThetaX.Location = new System.Drawing.Point(157, 127);
+            this.textBoxThetaX.Name = "textBoxThetaX";
+            this.textBoxThetaX.Size = new System.Drawing.Size(52, 20);
+            this.textBoxThetaX.TabIndex = 167;
+            this.textBoxThetaX.Text = "10";
+            // 
+            // textBoxDeltaX
+            // 
+            this.textBoxDeltaX.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxDeltaX.ForeColor = System.Drawing.Color.GreenYellow;
+            this.textBoxDeltaX.Location = new System.Drawing.Point(157, 104);
+            this.textBoxDeltaX.Name = "textBoxDeltaX";
+            this.textBoxDeltaX.Size = new System.Drawing.Size(52, 20);
+            this.textBoxDeltaX.TabIndex = 166;
+            this.textBoxDeltaX.Text = "10";
+            // 
+            // textBoxAttentionX
+            // 
+            this.textBoxAttentionX.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxAttentionX.ForeColor = System.Drawing.Color.PaleGreen;
+            this.textBoxAttentionX.Location = new System.Drawing.Point(157, 52);
+            this.textBoxAttentionX.Name = "textBoxAttentionX";
+            this.textBoxAttentionX.Size = new System.Drawing.Size(52, 20);
+            this.textBoxAttentionX.TabIndex = 165;
+            this.textBoxAttentionX.Text = "1";
+            // 
+            // textBoxMultiCount
+            // 
+            this.textBoxMultiCount.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxMultiCount.ForeColor = System.Drawing.Color.PaleGreen;
+            this.textBoxMultiCount.Location = new System.Drawing.Point(122, 334);
+            this.textBoxMultiCount.Name = "textBoxMultiCount";
+            this.textBoxMultiCount.Size = new System.Drawing.Size(52, 20);
+            this.textBoxMultiCount.TabIndex = 175;
+            this.textBoxMultiCount.Text = "5";
+            // 
             // ConfigFaultForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(237, 373);
+            this.ClientSize = new System.Drawing.Size(244, 373);
+            this.Controls.Add(this.textBoxMultiCount);
+            this.Controls.Add(this.textBoxHighGammaX);
+            this.Controls.Add(this.textBoxLowGammaX);
+            this.Controls.Add(this.textBoxHighBetaX);
+            this.Controls.Add(this.textBoxLowBetaX);
+            this.Controls.Add(this.textBoxHighAlphaX);
+            this.Controls.Add(this.textBoxLowAlphaX);
+            this.Controls.Add(this.textBoxMeditationX);
+            this.Controls.Add(this.textBoxThetaX);
+            this.Controls.Add(this.textBoxDeltaX);
+            this.Controls.Add(this.textBoxAttentionX);
             this.Controls.Add(this.BrowseB);
             this.Controls.Add(this.FilePath);
             this.Controls.Add(this.Ok);
@@ -398,6 +530,17 @@
         public System.Windows.Forms.TextBox FilePath;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.Button BrowseB;
+        public System.Windows.Forms.TextBox textBoxHighGammaX;
+        public System.Windows.Forms.TextBox textBoxLowGammaX;
+        public System.Windows.Forms.TextBox textBoxHighBetaX;
+        public System.Windows.Forms.TextBox textBoxLowBetaX;
+        public System.Windows.Forms.TextBox textBoxHighAlphaX;
+        public System.Windows.Forms.TextBox textBoxLowAlphaX;
+        public System.Windows.Forms.TextBox textBoxMeditationX;
+        public System.Windows.Forms.TextBox textBoxThetaX;
+        public System.Windows.Forms.TextBox textBoxDeltaX;
+        public System.Windows.Forms.TextBox textBoxAttentionX;
+        public System.Windows.Forms.TextBox textBoxMultiCount;
     }
 }
 

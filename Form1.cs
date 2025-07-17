@@ -46,7 +46,7 @@ namespace BrainLinkConnect
         private service.services services = new service.services();
 
         public ConfigParams config = new ConfigParams();
-
+        
         public int OnEEGDataEventId = 1;
 
         private EegHistoryModel baseH = new EegHistoryModel();
@@ -128,9 +128,28 @@ namespace BrainLinkConnect
             hhook = SetWindowsHookEx(WH_KEYBOARD_LL, _proc, hInstance, 0);
         }
 
-        public void setConfigFault(EegFaultModel config)
+        public void setConfigFault(EegFaultModel config, EegFaultModel configMulti, int multiCount)
         {
             this.config.EegFault = config;
+            this.config.EegFaults = new List<EegFaultModel>();
+
+            this.config.EegFaults.Add(this.config.EegFault);
+            for (int i = 1; i < multiCount; i++)
+            {
+                var conf = new EegFaultModel();
+                conf.Attention = this.config.EegFaults[i - 1].Attention * configMulti.Attention;
+                conf.Meditation = this.config.EegFaults[i - 1].Meditation * configMulti.Meditation;
+                conf.LowAlpha = this.config.EegFaults[i - 1].LowAlpha * configMulti.LowAlpha;
+                conf.LowBeta = this.config.EegFaults[i - 1].LowBeta * configMulti.LowBeta;
+                conf.LowGamma = this.config.EegFaults[i - 1].LowGamma * configMulti.LowGamma;
+                conf.HighAlpha = this.config.EegFaults[i - 1].HighAlpha * configMulti.HighAlpha;
+                conf.HighBeta = this.config.EegFaults[i - 1].HighBeta * configMulti.HighBeta;
+                conf.HighGamma = this.config.EegFaults[i - 1].HighGamma * configMulti.HighGamma;
+                conf.Delta = this.config.EegFaults[i - 1].Delta * configMulti.Delta;
+                conf.Theta = this.config.EegFaults[i - 1].Theta * configMulti.Theta;
+                this.config.EegFaults.Add(conf);
+            }
+            this.config.MultiCount = multiCount;
         }
 
 

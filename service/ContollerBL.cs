@@ -56,88 +56,119 @@ namespace ContollerBL.dto
     {
         public string getEventNameBy(EegHistoryModel brainLinkToServiseDto, ConfigParams f)
         {
-            var result = this.ToList();
-            if (f == null || f.EegFault == null)
-            {
+            if (this.Count == 0) {
                 return "";
             }
-            if (f.EegFault.Attention != 0)
-            {
-                result = result.FindAll(x => (x.Attention <= brainLinkToServiseDto.Attention + f.EegFault.Attention) &&
-                (brainLinkToServiseDto.Attention - f.EegFault.Attention <= x.Attention));
-            }
-            if (f.EegFault.Meditation != 0)
-            {
-                result = result.FindAll(x => (x.Meditation <= brainLinkToServiseDto.Meditation + f.EegFault.Meditation) &&
-                (brainLinkToServiseDto.Meditation - f.EegFault.Meditation <= x.Meditation));
-            }
-            if (f.EegFault.Delta != 0)
-            {
-                result = result.FindAll(x => (x.Delta <= brainLinkToServiseDto.Delta + f.EegFault.Delta) &&
-                (brainLinkToServiseDto.Delta - f.EegFault.Delta <= x.Delta));
-            }
-            if (f.EegFault.Theta != 0)
-            {
-                result = result.FindAll(x => (x.Theta <= brainLinkToServiseDto.Theta + f.EegFault.Theta) &&
-                (brainLinkToServiseDto.Theta - f.EegFault.Theta <= x.Theta));
-            }
-            if (f.EegFault.HighBeta != 0)
-            {
-                result = result.FindAll(x => (x.HighBeta <= brainLinkToServiseDto.HighBeta + f.EegFault.HighBeta) &&
-                (brainLinkToServiseDto.HighBeta - f.EegFault.HighBeta <= x.HighBeta));
-            }
-            if (f.EegFault.LowBeta != 0)
-            {
-                result = result.FindAll(x => (x.LowBeta <= brainLinkToServiseDto.LowBeta + f.EegFault.LowBeta) &&
-                (brainLinkToServiseDto.LowBeta - f.EegFault.LowBeta <= x.LowBeta));
-            }
-            if (f.EegFault.HighAlpha != 0)
-            {
-                result = result.FindAll(x => (x.HighAlpha <= brainLinkToServiseDto.HighAlpha + f.EegFault.HighAlpha) &&
-                (brainLinkToServiseDto.HighAlpha - f.EegFault.HighAlpha <= x.HighAlpha));
-            }
-            if (f.EegFault.LowAlpha != 0)
-            {
-                result = result.FindAll(x => (x.LowAlpha <= brainLinkToServiseDto.LowAlpha + f.EegFault.LowAlpha) &&
-                (brainLinkToServiseDto.LowAlpha - f.EegFault.LowAlpha <= x.LowAlpha));
-            }
-            if (f.EegFault.HighGamma != 0)
-            {
-                result = result.FindAll(x => (x.HighGamma <= brainLinkToServiseDto.HighGamma + f.EegFault.HighGamma) &&
-                (brainLinkToServiseDto.HighGamma - f.EegFault.HighGamma <= x.HighGamma));
-            }
-            if (f.EegFault.LowGamma != 0)
-            {
-                result = result.FindAll(x => (x.LowGamma <= brainLinkToServiseDto.LowGamma + f.EegFault.LowGamma) &&
-                (brainLinkToServiseDto.LowGamma - f.EegFault.LowGamma <= x.LowGamma));
-            }
 
-            if (result.Count != 0)
+            var r = this.ToList();
+            List<List<EegHistoryModel>> mr = new List<List<EegHistoryModel>>();
+            List<EegFaultModel> ef = new List<EegFaultModel>(f.EegFaults);
+            ef.Reverse();
+            List<EegHistoryModel> g = new List<EegHistoryModel>(r);
+            for (int i = 0; i < f.MultiCount; i++)
             {
+                if (i != 0)
+                {
+                    g = mr[i - 1];
+                }
+                mr.Add(SearchEvents(g, brainLinkToServiseDto, ef[i]));
+            }
+            mr.Reverse();
+            for (int i = 0; i < mr.Count; i++)
+            {
+                if (mr[i].Count == 0)
+                {
+                    continue;
+                }
+                List<EegHistoryModel> result = new List<EegHistoryModel>(mr[i].ToList());
                 Dictionary<string, int> resCounts = new Dictionary<string, int>();
 
                 resCounts["ml"] = result.FindAll(x => (x.EventName == "ml")).Count();
                 resCounts["mr"] = result.FindAll(x => (x.EventName == "mr")).Count();
                 resCounts["mu"] = result.FindAll(x => (x.EventName == "mu")).Count();
                 resCounts["md"] = result.FindAll(x => (x.EventName == "md")).Count();
+                resCounts["stop"] = result.FindAll(x => (x.EventName == "stop")).Count();
 
-                Console.WriteLine(resCounts["ml"] + ", " + resCounts["mr"] + ", " + resCounts["mu"] + ", " + resCounts["md"]);
+                Console.WriteLine(resCounts["ml"] + ", " + resCounts["mr"] + ", " + resCounts["mu"] + ", " + resCounts["md"] + "stop: " + resCounts["stop"] + " - on " + i);
 
+
+                if (resCounts.OrderBy(x => x.Value) == null)
+                {
+                    continue;
+                }
                 return resCounts.OrderBy(x => x.Value).Last().Key;
             }
-            else
-            {
-                return "";
-            }
+            return "";
         }
 
-        public List<EegHistoryModel> check(int param, int fault, List<EegHistoryModel> list)
+        public List<EegHistoryModel> SearchEvents(List<EegHistoryModel> result, EegHistoryModel brainLinkToServiseDto, EegFaultModel f)
         {
-            if (fault != 0)
+            if (f == null || f == null)
             {
-                return list.FindAll(x => (x.Theta <= param + fault) && (param - fault <= x.Theta));
+                return result;
             }
-            return list;
+            if (result.Count == 0) { return result; }
+            if (f.Attention != 0)
+            {
+                result = result.FindAll(x => (x.Attention <= brainLinkToServiseDto.Attention + f.Attention) &&
+                (brainLinkToServiseDto.Attention - f.Attention <= x.Attention));
+            }
+            if (result.Count == 0) { return result; }
+            if (f.Meditation != 0)
+            {
+                result = result.FindAll(x => (x.Meditation <= brainLinkToServiseDto.Meditation + f.Meditation) &&
+                (brainLinkToServiseDto.Meditation - f.Meditation <= x.Meditation));
+            }
+            if (result.Count == 0) { return result; }
+            if (f.Delta != 0)
+            {
+                result = result.FindAll(x => (x.Delta <= brainLinkToServiseDto.Delta + f.Delta) &&
+                (brainLinkToServiseDto.Delta - f.Delta <= x.Delta));
+            }
+            if (result.Count == 0) { return result; }
+            if (f.Theta != 0)
+            {
+                result = result.FindAll(x => (x.Theta <= brainLinkToServiseDto.Theta + f.Theta) &&
+                (brainLinkToServiseDto.Theta - f.Theta <= x.Theta));
+            }
+            if (result.Count == 0) { return result; }
+            if (f.HighBeta != 0)
+            {
+                result = result.FindAll(x => (x.HighBeta <= brainLinkToServiseDto.HighBeta + f.HighBeta) &&
+                (brainLinkToServiseDto.HighBeta - f.HighBeta <= x.HighBeta));
+            }
+            if (result.Count == 0) { return result; }
+            if (f.LowBeta != 0)
+            {
+                result = result.FindAll(x => (x.LowBeta <= brainLinkToServiseDto.LowBeta + f.LowBeta) &&
+                (brainLinkToServiseDto.LowBeta - f.LowBeta <= x.LowBeta));
+            }
+            if (result.Count == 0) { return result; }
+            if (f.HighAlpha != 0)
+            {
+                result = result.FindAll(x => (x.HighAlpha <= brainLinkToServiseDto.HighAlpha + f.HighAlpha) &&
+                (brainLinkToServiseDto.HighAlpha - f.HighAlpha <= x.HighAlpha));
+            }
+            if (result.Count == 0) { return result; }
+            if (f.LowAlpha != 0)
+            {
+                result = result.FindAll(x => (x.LowAlpha <= brainLinkToServiseDto.LowAlpha + f.LowAlpha) &&
+                (brainLinkToServiseDto.LowAlpha - f.LowAlpha <= x.LowAlpha));
+            }
+            if (result.Count == 0) { return result; }
+            if (f.HighGamma != 0)
+            {
+                result = result.FindAll(x => (x.HighGamma <= brainLinkToServiseDto.HighGamma + f.HighGamma) &&
+                (brainLinkToServiseDto.HighGamma - f.HighGamma <= x.HighGamma));
+            }
+            if (result.Count == 0) { return result; }
+            if (f.LowGamma != 0)
+            {
+                result = result.FindAll(x => (x.LowGamma <= brainLinkToServiseDto.LowGamma + f.LowGamma) &&
+                (brainLinkToServiseDto.LowGamma - f.LowGamma <= x.LowGamma));
+            }
+
+            return result;
         }
 
 }
@@ -178,5 +209,8 @@ namespace ContollerBL.dto
     public class ConfigParams
     {
         public EegFaultModel EegFault { get; set; }
+        public EegFaultModel EegFaultMulti { get; set; }
+        public int MultiCount { get; set; }
+        public List<EegFaultModel> EegFaults { get; set; }
     }
 }

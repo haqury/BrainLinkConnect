@@ -16,7 +16,7 @@ namespace ConfigBrainLinkForm
 {
     public interface FormWithConfig
     {
-        void setConfigFault(EegFaultModel config);
+        void setConfigFault(EegFaultModel config, EegFaultModel configMulti, int configCountMulti);
     }
 
     public partial class ConfigFaultForm : Form
@@ -56,9 +56,46 @@ namespace ConfigBrainLinkForm
             return config;
         }
 
+        private EegFaultModel GetConfigFaultX()
+        {
+            EegFaultModel config = new EegFaultModel();
+            try
+            {
+                config.Attention = int.Parse(this.textBoxAttentionX.Text);
+                config.Meditation = int.Parse(this.textBoxMeditationX.Text);
+                config.Delta = int.Parse(this.textBoxDeltaX.Text);
+                config.Theta = int.Parse(this.textBoxThetaX.Text);
+                config.LowAlpha = int.Parse(this.textBoxLowAlphaX.Text);
+                config.HighAlpha = int.Parse(this.textBoxHighAlphaX.Text);
+                config.LowBeta = int.Parse(this.textBoxLowBetaX.Text);
+                config.HighBeta = int.Parse(this.textBoxHighBetaX.Text);
+                config.LowGamma = int.Parse(this.textBoxLowGammaX.Text);
+                config.HighGamma = int.Parse(this.textBoxHighGammaX.Text);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return config;
+        }
+
+        private int GetConfigMultiCount()
+        {
+            EegFaultModel config = new EegFaultModel();
+            try
+            {
+                return int.Parse(this.textBoxMultiCount.Text);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return 0;
+        }
+
         private void Ok_Click(object sender, EventArgs e)
         {
-            BaseForm.setConfigFault(GetConfigFault());
+            BaseForm.setConfigFault(GetConfigFault(), GetConfigFaultX(), GetConfigMultiCount());
         }
 
         private void loadConfig_Click(object sender, EventArgs e)

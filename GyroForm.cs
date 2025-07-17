@@ -25,10 +25,10 @@ namespace BrainLinkConnect
             yvalue.Text = Y.ToString();
             zvalue.Text = Z.ToString();
         }
-
         private void GyroBase_Click(object sender, EventArgs e)
         {
         }
+
     }
     
     public class GyroHistory
