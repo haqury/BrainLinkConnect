@@ -68,9 +68,10 @@
             // Start
             // 
             this.Start.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Start.Location = new System.Drawing.Point(16, 57);
+            this.Start.Location = new System.Drawing.Point(11, 37);
+            this.Start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(112, 31);
+            this.Start.Size = new System.Drawing.Size(75, 20);
             this.Start.TabIndex = 0;
             this.Start.Text = "Connect";
             this.Start.UseVisualStyleBackColor = true;
@@ -80,10 +81,10 @@
             // 
             this.ele.AutoSize = true;
             this.ele.ForeColor = System.Drawing.Color.GreenYellow;
-            this.ele.Location = new System.Drawing.Point(74, 20);
-            this.ele.Margin = new System.Windows.Forms.Padding(3, 14, 15, 14);
+            this.ele.Location = new System.Drawing.Point(49, 13);
+            this.ele.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
             this.ele.Name = "ele";
-            this.ele.Size = new System.Drawing.Size(18, 20);
+            this.ele.Size = new System.Drawing.Size(13, 13);
             this.ele.TabIndex = 23;
             this.ele.Text = "0";
             // 
@@ -91,10 +92,10 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label23.Location = new System.Drawing.Point(3, 20);
-            this.label23.Margin = new System.Windows.Forms.Padding(15, 14, 3, 14);
+            this.label23.Location = new System.Drawing.Point(2, 13);
+            this.label23.Margin = new System.Windows.Forms.Padding(10, 9, 2, 9);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(64, 20);
+            this.label23.Size = new System.Drawing.Size(43, 13);
             this.label23.TabIndex = 22;
             this.label23.Text = "Battery:";
             // 
@@ -102,10 +103,10 @@
             // 
             this.ap.AutoSize = true;
             this.ap.ForeColor = System.Drawing.Color.GreenYellow;
-            this.ap.Location = new System.Drawing.Point(333, 18);
-            this.ap.Margin = new System.Windows.Forms.Padding(3, 14, 15, 14);
+            this.ap.Location = new System.Drawing.Point(222, 12);
+            this.ap.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
             this.ap.Name = "ap";
-            this.ap.Size = new System.Drawing.Size(18, 20);
+            this.ap.Size = new System.Drawing.Size(13, 13);
             this.ap.TabIndex = 21;
             this.ap.Text = "0";
             // 
@@ -113,10 +114,10 @@
             // 
             this.temp.AutoSize = true;
             this.temp.ForeColor = System.Drawing.Color.GreenYellow;
-            this.temp.Location = new System.Drawing.Point(472, 18);
-            this.temp.Margin = new System.Windows.Forms.Padding(3, 14, 15, 14);
+            this.temp.Location = new System.Drawing.Point(315, 12);
+            this.temp.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
             this.temp.Name = "temp";
-            this.temp.Size = new System.Drawing.Size(18, 20);
+            this.temp.Size = new System.Drawing.Size(13, 13);
             this.temp.TabIndex = 27;
             this.temp.Text = "0";
             // 
@@ -124,10 +125,10 @@
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label28.Location = new System.Drawing.Point(369, 18);
-            this.label28.Margin = new System.Windows.Forms.Padding(15, 14, 3, 14);
+            this.label28.Location = new System.Drawing.Point(246, 12);
+            this.label28.Margin = new System.Windows.Forms.Padding(10, 9, 2, 9);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(104, 20);
+            this.label28.Size = new System.Drawing.Size(70, 13);
             this.label28.TabIndex = 26;
             this.label28.Text = "Temperature:";
             // 
@@ -135,10 +136,10 @@
             // 
             this.heart.AutoSize = true;
             this.heart.ForeColor = System.Drawing.Color.GreenYellow;
-            this.heart.Location = new System.Drawing.Point(606, 20);
-            this.heart.Margin = new System.Windows.Forms.Padding(3, 14, 15, 14);
+            this.heart.Location = new System.Drawing.Point(404, 13);
+            this.heart.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
             this.heart.Name = "heart";
-            this.heart.Size = new System.Drawing.Size(18, 20);
+            this.heart.Size = new System.Drawing.Size(13, 13);
             this.heart.TabIndex = 29;
             this.heart.Text = "0";
             // 
@@ -146,10 +147,10 @@
             // 
             this.label30.AutoSize = true;
             this.label30.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label30.Location = new System.Drawing.Point(522, 20);
-            this.label30.Margin = new System.Windows.Forms.Padding(15, 14, 3, 14);
+            this.label30.Location = new System.Drawing.Point(348, 13);
+            this.label30.Margin = new System.Windows.Forms.Padding(10, 9, 2, 9);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(92, 20);
+            this.label30.Size = new System.Drawing.Size(62, 13);
             this.label30.TabIndex = 28;
             this.label30.Text = "Heart Rate:";
             // 
@@ -157,10 +158,10 @@
             // 
             this.signal.AutoSize = true;
             this.signal.ForeColor = System.Drawing.Color.GreenYellow;
-            this.signal.Location = new System.Drawing.Point(158, 20);
-            this.signal.Margin = new System.Windows.Forms.Padding(3, 14, 15, 14);
+            this.signal.Location = new System.Drawing.Point(105, 13);
+            this.signal.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
             this.signal.Name = "signal";
-            this.signal.Size = new System.Drawing.Size(18, 20);
+            this.signal.Size = new System.Drawing.Size(13, 13);
             this.signal.TabIndex = 38;
             this.signal.Text = "0";
             // 
@@ -168,10 +169,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label4.Location = new System.Drawing.Point(105, 20);
-            this.label4.Margin = new System.Windows.Forms.Padding(15, 14, 3, 14);
+            this.label4.Location = new System.Drawing.Point(70, 13);
+            this.label4.Margin = new System.Windows.Forms.Padding(10, 9, 2, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 20);
+            this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 37;
             this.label4.Text = "Signal:";
             // 
@@ -180,9 +181,10 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBox1.ForeColor = System.Drawing.Color.GreenYellow;
-            this.checkBox1.Location = new System.Drawing.Point(182, 20);
+            this.checkBox1.Location = new System.Drawing.Point(121, 13);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(151, 22);
+            this.checkBox1.Size = new System.Drawing.Size(102, 16);
             this.checkBox1.TabIndex = 41;
             this.checkBox1.Text = "Appreciation:";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -191,20 +193,18 @@
             // keyDown
             // 
             this.keyDown.AutoSize = true;
-            this.keyDown.Location = new System.Drawing.Point(580, 200);
-            this.keyDown.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.keyDown.Location = new System.Drawing.Point(387, 130);
             this.keyDown.Name = "keyDown";
-            this.keyDown.Size = new System.Drawing.Size(0, 20);
+            this.keyDown.Size = new System.Drawing.Size(0, 13);
             this.keyDown.TabIndex = 75;
             // 
             // IsUseKey
             // 
             this.IsUseKey.AutoSize = true;
             this.IsUseKey.ForeColor = System.Drawing.Color.GreenYellow;
-            this.IsUseKey.Location = new System.Drawing.Point(141, 62);
-            this.IsUseKey.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.IsUseKey.Location = new System.Drawing.Point(94, 40);
             this.IsUseKey.Name = "IsUseKey";
-            this.IsUseKey.Size = new System.Drawing.Size(89, 24);
+            this.IsUseKey.Size = new System.Drawing.Size(63, 17);
             this.IsUseKey.TabIndex = 76;
             this.IsUseKey.Text = "use key";
             this.IsUseKey.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -214,10 +214,10 @@
             // 
             this.checkBoxMu.AutoSize = true;
             this.checkBoxMu.ForeColor = System.Drawing.Color.GreenYellow;
-            this.checkBoxMu.Location = new System.Drawing.Point(401, 97);
-            this.checkBoxMu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxMu.Location = new System.Drawing.Point(267, 63);
+            this.checkBoxMu.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.checkBoxMu.Name = "checkBoxMu";
-            this.checkBoxMu.Size = new System.Drawing.Size(105, 24);
+            this.checkBoxMu.Size = new System.Drawing.Size(72, 17);
             this.checkBoxMu.TabIndex = 78;
             this.checkBoxMu.Text = "mouse up";
             this.checkBoxMu.UseVisualStyleBackColor = true;
@@ -226,10 +226,10 @@
             // 
             this.checkBoxMl.AutoSize = true;
             this.checkBoxMl.ForeColor = System.Drawing.Color.GreenYellow;
-            this.checkBoxMl.Location = new System.Drawing.Point(288, 129);
-            this.checkBoxMl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxMl.Location = new System.Drawing.Point(192, 84);
+            this.checkBoxMl.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.checkBoxMl.Name = "checkBoxMl";
-            this.checkBoxMl.Size = new System.Drawing.Size(109, 24);
+            this.checkBoxMl.Size = new System.Drawing.Size(74, 17);
             this.checkBoxMl.TabIndex = 79;
             this.checkBoxMl.Text = "mouse left";
             this.checkBoxMl.UseVisualStyleBackColor = true;
@@ -238,10 +238,10 @@
             // 
             this.checkBoxMr.AutoSize = true;
             this.checkBoxMr.ForeColor = System.Drawing.Color.GreenYellow;
-            this.checkBoxMr.Location = new System.Drawing.Point(516, 129);
-            this.checkBoxMr.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxMr.Location = new System.Drawing.Point(344, 84);
+            this.checkBoxMr.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.checkBoxMr.Name = "checkBoxMr";
-            this.checkBoxMr.Size = new System.Drawing.Size(118, 24);
+            this.checkBoxMr.Size = new System.Drawing.Size(80, 17);
             this.checkBoxMr.TabIndex = 80;
             this.checkBoxMr.Text = "mouse right";
             this.checkBoxMr.UseVisualStyleBackColor = true;
@@ -250,10 +250,10 @@
             // 
             this.checkBoxMd.AutoSize = true;
             this.checkBoxMd.ForeColor = System.Drawing.Color.GreenYellow;
-            this.checkBoxMd.Location = new System.Drawing.Point(401, 160);
-            this.checkBoxMd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxMd.Location = new System.Drawing.Point(267, 104);
+            this.checkBoxMd.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.checkBoxMd.Name = "checkBoxMd";
-            this.checkBoxMd.Size = new System.Drawing.Size(134, 24);
+            this.checkBoxMd.Size = new System.Drawing.Size(92, 17);
             this.checkBoxMd.TabIndex = 81;
             this.checkBoxMd.Text = "mouse doewn";
             this.checkBoxMd.UseVisualStyleBackColor = true;
@@ -261,10 +261,9 @@
             // saveToFileB
             // 
             this.saveToFileB.ForeColor = System.Drawing.Color.Black;
-            this.saveToFileB.Location = new System.Drawing.Point(708, 149);
-            this.saveToFileB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.saveToFileB.Location = new System.Drawing.Point(472, 97);
             this.saveToFileB.Name = "saveToFileB";
-            this.saveToFileB.Size = new System.Drawing.Size(112, 35);
+            this.saveToFileB.Size = new System.Drawing.Size(75, 23);
             this.saveToFileB.TabIndex = 83;
             this.saveToFileB.Text = "save to file";
             this.saveToFileB.UseVisualStyleBackColor = true;
@@ -273,10 +272,9 @@
             // LoadFromFile
             // 
             this.LoadFromFile.ForeColor = System.Drawing.Color.Black;
-            this.LoadFromFile.Location = new System.Drawing.Point(704, 105);
-            this.LoadFromFile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.LoadFromFile.Location = new System.Drawing.Point(469, 68);
             this.LoadFromFile.Name = "LoadFromFile";
-            this.LoadFromFile.Size = new System.Drawing.Size(117, 35);
+            this.LoadFromFile.Size = new System.Drawing.Size(78, 23);
             this.LoadFromFile.TabIndex = 86;
             this.LoadFromFile.Text = "load from file";
             this.LoadFromFile.UseVisualStyleBackColor = true;
@@ -285,10 +283,9 @@
             // ClearButton
             // 
             this.ClearButton.ForeColor = System.Drawing.Color.Black;
-            this.ClearButton.Location = new System.Drawing.Point(704, 60);
-            this.ClearButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ClearButton.Location = new System.Drawing.Point(469, 39);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(117, 35);
+            this.ClearButton.Size = new System.Drawing.Size(78, 23);
             this.ClearButton.TabIndex = 90;
             this.ClearButton.Text = "clear";
             this.ClearButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -299,10 +296,10 @@
             // 
             this.label26.AutoSize = true;
             this.label26.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label26.Location = new System.Drawing.Point(634, 18);
-            this.label26.Margin = new System.Windows.Forms.Padding(15, 14, 3, 14);
+            this.label26.Location = new System.Drawing.Point(423, 12);
+            this.label26.Margin = new System.Windows.Forms.Padding(10, 9, 2, 9);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(67, 20);
+            this.label26.Size = new System.Drawing.Size(45, 13);
             this.label26.TabIndex = 24;
             this.label26.Text = "Version:";
             // 
@@ -310,10 +307,10 @@
             // 
             this.version.AutoSize = true;
             this.version.ForeColor = System.Drawing.Color.GreenYellow;
-            this.version.Location = new System.Drawing.Point(699, 18);
-            this.version.Margin = new System.Windows.Forms.Padding(3, 14, 15, 14);
+            this.version.Location = new System.Drawing.Point(466, 12);
+            this.version.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
             this.version.Name = "version";
-            this.version.Size = new System.Drawing.Size(18, 20);
+            this.version.Size = new System.Drawing.Size(13, 13);
             this.version.TabIndex = 25;
             this.version.Text = "0";
             // 
@@ -321,10 +318,10 @@
             // 
             this.CounterL.AutoSize = true;
             this.CounterL.ForeColor = System.Drawing.Color.GreenYellow;
-            this.CounterL.Location = new System.Drawing.Point(801, 18);
-            this.CounterL.Margin = new System.Windows.Forms.Padding(3, 14, 15, 14);
+            this.CounterL.Location = new System.Drawing.Point(534, 12);
+            this.CounterL.Margin = new System.Windows.Forms.Padding(2, 9, 10, 9);
             this.CounterL.Name = "CounterL";
-            this.CounterL.Size = new System.Drawing.Size(18, 20);
+            this.CounterL.Size = new System.Drawing.Size(13, 13);
             this.CounterL.TabIndex = 91;
             this.CounterL.Text = "0";
             // 
@@ -332,10 +329,9 @@
             // 
             this.Autouse.AutoSize = true;
             this.Autouse.ForeColor = System.Drawing.Color.GreenYellow;
-            this.Autouse.Location = new System.Drawing.Point(141, 97);
-            this.Autouse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Autouse.Location = new System.Drawing.Point(94, 63);
             this.Autouse.Name = "Autouse";
-            this.Autouse.Size = new System.Drawing.Size(93, 24);
+            this.Autouse.Size = new System.Drawing.Size(64, 17);
             this.Autouse.TabIndex = 92;
             this.Autouse.Text = "autouse";
             this.Autouse.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -344,10 +340,10 @@
             // ConfigFault
             // 
             this.ConfigFault.ForeColor = System.Drawing.Color.Black;
-            this.ConfigFault.Location = new System.Drawing.Point(21, 217);
-            this.ConfigFault.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ConfigFault.Location = new System.Drawing.Point(14, 141);
+            this.ConfigFault.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.ConfigFault.Name = "ConfigFault";
-            this.ConfigFault.Size = new System.Drawing.Size(114, 32);
+            this.ConfigFault.Size = new System.Drawing.Size(76, 21);
             this.ConfigFault.TabIndex = 95;
             this.ConfigFault.Text = "config";
             this.ConfigFault.UseVisualStyleBackColor = true;
@@ -356,10 +352,9 @@
             // EEGDataButton
             // 
             this.EEGDataButton.ForeColor = System.Drawing.Color.Black;
-            this.EEGDataButton.Location = new System.Drawing.Point(15, 106);
-            this.EEGDataButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.EEGDataButton.Location = new System.Drawing.Point(10, 69);
             this.EEGDataButton.Name = "EEGDataButton";
-            this.EEGDataButton.Size = new System.Drawing.Size(117, 35);
+            this.EEGDataButton.Size = new System.Drawing.Size(78, 23);
             this.EEGDataButton.TabIndex = 96;
             this.EEGDataButton.Text = "EEGData";
             this.EEGDataButton.UseVisualStyleBackColor = true;
@@ -368,10 +363,10 @@
             // BrowseB
             // 
             this.BrowseB.ForeColor = System.Drawing.Color.Black;
-            this.BrowseB.Location = new System.Drawing.Point(602, 62);
-            this.BrowseB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BrowseB.Location = new System.Drawing.Point(401, 40);
+            this.BrowseB.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.BrowseB.Name = "BrowseB";
-            this.BrowseB.Size = new System.Drawing.Size(81, 32);
+            this.BrowseB.Size = new System.Drawing.Size(54, 21);
             this.BrowseB.TabIndex = 166;
             this.BrowseB.Text = "Browse";
             this.BrowseB.UseVisualStyleBackColor = true;
@@ -381,20 +376,18 @@
             // 
             this.FilePath.BackColor = System.Drawing.SystemColors.MenuText;
             this.FilePath.ForeColor = System.Drawing.Color.PaleGreen;
-            this.FilePath.Location = new System.Drawing.Point(360, 63);
-            this.FilePath.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.FilePath.Location = new System.Drawing.Point(240, 41);
             this.FilePath.Name = "FilePath";
-            this.FilePath.Size = new System.Drawing.Size(234, 26);
+            this.FilePath.Size = new System.Drawing.Size(157, 20);
             this.FilePath.TabIndex = 165;
             this.FilePath.Text = "C:\\BLconfig\\user1.json";
             // 
             // HRVView
             // 
             this.HRVView.ForeColor = System.Drawing.Color.Black;
-            this.HRVView.Location = new System.Drawing.Point(464, 217);
-            this.HRVView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.HRVView.Location = new System.Drawing.Point(309, 141);
             this.HRVView.Name = "HRVView";
-            this.HRVView.Size = new System.Drawing.Size(117, 35);
+            this.HRVView.Size = new System.Drawing.Size(78, 23);
             this.HRVView.TabIndex = 167;
             this.HRVView.Text = "HRV";
             this.HRVView.UseVisualStyleBackColor = true;
@@ -403,10 +396,9 @@
             // Gyro
             // 
             this.Gyro.ForeColor = System.Drawing.Color.Black;
-            this.Gyro.Location = new System.Drawing.Point(141, 223);
-            this.Gyro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Gyro.Location = new System.Drawing.Point(94, 145);
             this.Gyro.Name = "Gyro";
-            this.Gyro.Size = new System.Drawing.Size(74, 29);
+            this.Gyro.Size = new System.Drawing.Size(49, 19);
             this.Gyro.TabIndex = 168;
             this.Gyro.Text = "Gyro";
             this.Gyro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -416,10 +408,9 @@
             // Diagram
             // 
             this.Diagram.ForeColor = System.Drawing.Color.Black;
-            this.Diagram.Location = new System.Drawing.Point(704, 214);
-            this.Diagram.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Diagram.Location = new System.Drawing.Point(469, 139);
             this.Diagram.Name = "Diagram";
-            this.Diagram.Size = new System.Drawing.Size(117, 35);
+            this.Diagram.Size = new System.Drawing.Size(78, 23);
             this.Diagram.TabIndex = 169;
             this.Diagram.Text = "Diagram";
             this.Diagram.UseVisualStyleBackColor = true;
@@ -429,10 +420,10 @@
             // 
             this.checkBoxStop.AutoSize = true;
             this.checkBoxStop.ForeColor = System.Drawing.Color.GreenYellow;
-            this.checkBoxStop.Location = new System.Drawing.Point(401, 129);
-            this.checkBoxStop.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxStop.Location = new System.Drawing.Point(267, 84);
+            this.checkBoxStop.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.checkBoxStop.Name = "checkBoxStop";
-            this.checkBoxStop.Size = new System.Drawing.Size(66, 24);
+            this.checkBoxStop.Size = new System.Drawing.Size(46, 17);
             this.checkBoxStop.TabIndex = 170;
             this.checkBoxStop.TabStop = false;
             this.checkBoxStop.Text = "stop";
@@ -440,10 +431,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(846, 258);
+            this.ClientSize = new System.Drawing.Size(564, 168);
             this.Controls.Add(this.checkBoxStop);
             this.Controls.Add(this.Diagram);
             this.Controls.Add(this.Gyro);
@@ -479,6 +470,7 @@
             this.ForeColor = System.Drawing.Color.OliveDrab;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

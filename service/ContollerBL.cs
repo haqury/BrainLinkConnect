@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BrainLinkConnect.service;
 using ConfigBrainLinkForm;
@@ -47,7 +49,73 @@ namespace ContollerBL.service
             return path + "/";
         }
     }
+
+    public class HeadTracker
+    {
+        // 1. Данные для калибровки
+        private Vector3 _initialEuler; // Начальные углы (тангаж, рыскание, крен)
+        private bool _isCalibrated = false;
+
+        // 2. Преобразование сырых данных в углы
+        public Vector3 ProcessRawData(int x, int y, int z)
+        {
+            // Пример: преобразование сырых значений в углы (настройте под ваш гироскоп)
+            float pitch = (x / 32768f) * 90f; // Пример для ±90°
+            float yaw = (y / 32768f) * 90f;
+            float roll = (z / 32768f) * 90f;
+            return new Vector3(pitch, yaw, roll);
+        }
+
+        // 3. Калибровка начального положения
+        public void Calibrate(int x, int y, int z)
+        {
+            _initialEuler = ProcessRawData(x, y, z);
+            _isCalibrated = true;
+        }
+
+        // 3. deКалибровка начального положения
+        public void deCalibrate()
+        {
+            _isCalibrated = false;
+        }
+
+        public bool isCalibrate()
+        {
+            return _isCalibrated;
+        }
+
+        // 4. Определение направления
+        public string GetDirectionKey(int x, int y, int z)
+        {
+            if (!_isCalibrated) return "not_calibrated";
+
+            Vector3 currentEuler = ProcessRawData(x, y, z);
+            Vector3 delta = currentEuler - _initialEuler;
+
+            // Пороги (настройте под вашу чувствительность)
+            const float threshold = 0.1f; // 30°
+
+            if (delta.X > threshold) 
+                return "down";
+            if (delta.X < -threshold) 
+                return "up";
+            if (delta.Y > threshold) 
+                return "right";
+            if (delta.Y < -threshold)
+                return "left";
+
+            return "";
+        }
+    }
+
+    public static class MathF
+    {
+    public static float Atan2(float y, float x) => (float)Math.Atan2(y, x);
+    public static float Asin(float x) => (float)Math.Asin(x);
+    public static float PI => (float)Math.PI;
 }
+}
+
 
 
 namespace ContollerBL.dto

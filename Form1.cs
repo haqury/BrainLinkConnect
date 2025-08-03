@@ -50,12 +50,7 @@ namespace BrainLinkConnect
         public int OnEEGDataEventId = 1;
 
         private EegHistoryModel baseH = new EegHistoryModel();
-
-        private List<float> hrvList = new List<float>();
-
-        private List<double> lastHRV = new List<double>();
-
-        private List<(long, string)> Devices = new List<(long, string)>();
+        private GyroForm fg = new GyroForm();
 
         private UdpClient udpClient = new UdpClient();
         private UdpClient udpServer = new UdpClient(5001);
@@ -187,6 +182,13 @@ namespace BrainLinkConnect
             h.LowGamma = Model.LowGamma;
             h.HighGamma = Model.HighGamma;
 
+            //this.runGyro(h);
+
+            //if (fg.UseGyro.Checked == true) {
+            //    string eventName = fg.getEventName();
+            //    h.EventName = eventName;
+            //}
+
             h.EventName = getEventName();
 
             if (Autouse.Checked == true && h.EventName != "")
@@ -209,6 +211,48 @@ namespace BrainLinkConnect
             // bf.Serialize(ms, brainLinkToServiseDto);
             // byte[] buffer = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(brainLinkToServiseDto));
             // udpClient.SendAsync(buffer, buffer.Length, "127.0.0.1", 1234);
+        }
+
+        private void runGyro(EegHistoryModel h)
+        {
+            if (h.Meditation >= 40)
+            {
+                if (fg.isCalibrete() == false)
+                {
+                    fg.Calibrete();
+                }
+                else
+                {
+                    string eventName = fg.getEventName();
+                    h.EventName = eventName;
+                    services.mouse.play(h, config, this.adeptEventName(h.EventName), true);
+                }
+            }
+            else
+            {
+                fg.deCalibrete();
+            }
+        }
+
+        private string adeptEventName(string name)
+        {
+            if (name == "left")
+            {
+                return "ml";
+            }
+            else if (name == "right")
+            {
+                return "mr";
+            }
+            else if (name == "up")
+            {
+                return "mu";
+            }
+            else if (name == "down")
+            {
+                return "md";
+            }
+            return "";
         }
 
         private string getEventName()
@@ -379,7 +423,6 @@ namespace BrainLinkConnect
 
         private void Gyro_Click(object sender, EventArgs e)
         {
-            GyroForm fg = new GyroForm();
             fg.Show();
 
             brainLinkSDK.OnGyroDataEvent += new BrainLinkSDKGyroDataEvent(fg.BrainLinkSDK_OnGyroDataEvent);

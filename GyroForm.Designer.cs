@@ -34,8 +34,8 @@
             this.yvalue = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.xvalue = new System.Windows.Forms.Label();
-            this.GyroBase = new System.Windows.Forms.Button();
             this.UseGyro = new System.Windows.Forms.CheckBox();
+            this.ActivateGyro = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // checkBox2
@@ -105,23 +105,11 @@
             this.xvalue.TabIndex = 43;
             this.xvalue.Text = "0";
             // 
-            // GyroBase
-            // 
-            this.GyroBase.ForeColor = System.Drawing.Color.Black;
-            this.GyroBase.Location = new System.Drawing.Point(89, 43);
-            this.GyroBase.Name = "GyroBase";
-            this.GyroBase.Size = new System.Drawing.Size(49, 19);
-            this.GyroBase.TabIndex = 96;
-            this.GyroBase.Text = "Gyro";
-            this.GyroBase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.GyroBase.UseVisualStyleBackColor = true;
-            this.GyroBase.Click += new System.EventHandler(this.GyroBase_Click);
-            // 
             // UseGyro
             // 
             this.UseGyro.AutoSize = true;
             this.UseGyro.ForeColor = System.Drawing.Color.GreenYellow;
-            this.UseGyro.Location = new System.Drawing.Point(17, 43);
+            this.UseGyro.Location = new System.Drawing.Point(12, 43);
             this.UseGyro.Name = "UseGyro";
             this.UseGyro.Size = new System.Drawing.Size(66, 17);
             this.UseGyro.TabIndex = 95;
@@ -129,13 +117,25 @@
             this.UseGyro.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.UseGyro.UseVisualStyleBackColor = true;
             // 
+            // ActivateGyro
+            // 
+            this.ActivateGyro.AutoSize = true;
+            this.ActivateGyro.ForeColor = System.Drawing.Color.GreenYellow;
+            this.ActivateGyro.Location = new System.Drawing.Point(89, 43);
+            this.ActivateGyro.Name = "ActivateGyro";
+            this.ActivateGyro.Size = new System.Drawing.Size(66, 17);
+            this.ActivateGyro.TabIndex = 97;
+            this.ActivateGyro.Text = "use gyro";
+            this.ActivateGyro.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.ActivateGyro.UseVisualStyleBackColor = true;
+            // 
             // GyroForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(191, 85);
-            this.Controls.Add(this.GyroBase);
+            this.ClientSize = new System.Drawing.Size(191, 109);
+            this.Controls.Add(this.ActivateGyro);
             this.Controls.Add(this.UseGyro);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.zvalue);
@@ -158,7 +158,7 @@
         private System.Windows.Forms.Label yvalue;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label xvalue;
-        private System.Windows.Forms.Button GyroBase;
         public System.Windows.Forms.CheckBox UseGyro;
+        public System.Windows.Forms.CheckBox ActivateGyro;
     }
 }

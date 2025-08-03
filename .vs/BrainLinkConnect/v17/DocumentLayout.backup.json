@@ -3,36 +3,43 @@
   "WorkspaceRootPath": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|c:\\users\\haqury\\source\\repos\\brainlinkconnect\\service\\contollerbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:service\\contollerbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\connectform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:connectform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\ConnectForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:ConnectForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|c:\\users\\haqury\\source\\repos\\brainlinkconnect\\service\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:service\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|c:\\users\\haqury\\source\\repos\\brainlinkconnect\\configfaultform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:configfaultform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\service\\contollerbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:service\\contollerbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|c:\\users\\haqury\\source\\repos\\brainlinkconnect\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\gyroform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:gyroform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\configfaultform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:configfaultform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\haqury\\AppData\\Local\\Temp\\.vsdbgsrc\\357714f7e12828b78a4113576700c3bc8b51e48dd45c7d4abc0154e7f560ca57\\BrainLinkSDK.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\service\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:service\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\configfaultform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:configfaultform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\gyroform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6C0CB568-8F17-4808-B859-C7BB9510C149}|BrainLinkConnect.csproj|solutionrelative:gyroform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\.vs\\BrainLinkConnect\\v17\\ResourceExplorer\\settings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.vs\\BrainLinkConnect\\v17\\ResourceExplorer\\settings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,11 +49,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\service\\Class1.cs",
+              "RelativeDocumentMoniker": "service\\Class1.cs",
+              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\service\\Class1.cs*",
+              "RelativeToolTip": "service\\Class1.cs*",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAnwHUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T21:06:10.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BrainLinkSDK.cs",
+              "DocumentMoniker": "C:\\Users\\haqury\\AppData\\Local\\Temp\\.vsdbgsrc\\357714f7e12828b78a4113576700c3bc8b51e48dd45c7d4abc0154e7f560ca57\\BrainLinkSDK.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\357714f7e12828b78a4113576700c3bc8b51e48dd45c7d4abc0154e7f560ca57\\BrainLinkSDK.cs",
+              "ToolTip": "C:\\Users\\haqury\\AppData\\Local\\Temp\\.vsdbgsrc\\357714f7e12828b78a4113576700c3bc8b51e48dd45c7d4abc0154e7f560ca57\\BrainLinkSDK.cs",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\357714f7e12828b78a4113576700c3bc8b51e48dd45c7d4abc0154e7f560ca57\\BrainLinkSDK.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAgwFkAAAADAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-19T12:22:13.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "GyroForm.cs",
+              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\GyroForm.cs",
+              "RelativeDocumentMoniker": "GyroForm.cs",
+              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\GyroForm.cs",
+              "RelativeToolTip": "GyroForm.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAADwvyMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T16:49:43.829Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GyroForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\GyroForm.cs",
+              "RelativeDocumentMoniker": "GyroForm.cs",
+              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\GyroForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "GyroForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T16:47:26.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ConfigFaultForm.cs",
               "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\ConfigFaultForm.cs",
               "RelativeDocumentMoniker": "ConfigFaultForm.cs",
@@ -54,8 +110,45 @@
               "RelativeToolTip": "ConfigFaultForm.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAgwDcAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T11:23:16.471Z",
+              "WhenOpened": "2025-07-08T11:23:16.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAAAAAMYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T18:34:51.667Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ContollerBL.cs",
+              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\service\\ContollerBL.cs",
+              "RelativeDocumentMoniker": "service\\ContollerBL.cs",
+              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\service\\ContollerBL.cs",
+              "RelativeToolTip": "service\\ContollerBL.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAAAHwAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T09:07:53.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "settings.json",
+              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\.vs\\BrainLinkConnect\\v17\\ResourceExplorer\\settings.json",
+              "RelativeDocumentMoniker": ".vs\\BrainLinkConnect\\v17\\ResourceExplorer\\settings.json",
+              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\.vs\\BrainLinkConnect\\v17\\ResourceExplorer\\settings.json",
+              "RelativeToolTip": ".vs\\BrainLinkConnect\\v17\\ResourceExplorer\\settings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-17T14:46:20.546Z"
             },
             {
               "$type": "Document",
@@ -66,38 +159,11 @@
               "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\ConfigFaultForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "ConfigFaultForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T09:49:39.634Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-07-08T09:49:39.634Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ContollerBL.cs",
-              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\service\\ContollerBL.cs",
-              "RelativeDocumentMoniker": "service\\ContollerBL.cs",
-              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\service\\ContollerBL.cs",
-              "RelativeToolTip": "service\\ContollerBL.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAswEsAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T09:07:53.355Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\service\\Class1.cs",
-              "RelativeDocumentMoniker": "service\\Class1.cs",
-              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\service\\Class1.cs",
-              "RelativeToolTip": "service\\Class1.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAWwGQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T12:13:51.373Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
@@ -106,45 +172,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-08T09:41:16.657Z",
               "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConnectForm.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\ConnectForm.Designer.cs",
-              "RelativeDocumentMoniker": "ConnectForm.Designer.cs",
-              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\ConnectForm.Designer.cs",
-              "RelativeToolTip": "ConnectForm.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T09:39:26.231Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ConnectForm.cs",
-              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\ConnectForm.cs",
-              "RelativeDocumentMoniker": "ConnectForm.cs",
-              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\ConnectForm.cs",
-              "RelativeToolTip": "ConnectForm.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T09:39:06.763Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\haqury\\source\\repos\\BrainLinkConnect\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAQwJcAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-06T18:34:51.667Z",
-              "EditorCaption": ""
             }
           ]
         }

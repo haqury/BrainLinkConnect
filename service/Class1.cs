@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Collections.Specialized.BitVector32;
 using System.Windows.Forms;
-using System.Drawing;
 using BrainLinkSDK_Windows;
-
-using System.Runtime.InteropServices;
 using ContollerBL.dto;
-
-using System.Runtime.InteropServices;
+using static System.Collections.Specialized.BitVector32;
 
 namespace BrainLinkConnect.service
 {
@@ -101,19 +100,19 @@ namespace BrainLinkConnect.service
         private void playKey(object eventMouse)
         {
             switch (eventMouse)
-            {
-                case "ml":
-                    Cursor.Position = new Point(Cursor.Position.X - 1, Cursor.Position.Y);
-                    break;
-                case "mr":
-                    Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
-                    break;
-                case "md":
-                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 1);
-                    break;
-                case "mu":
-                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 1);
-                    break;
+                {
+                    case "ml":
+                        Cursor.Position = new Point(Cursor.Position.X - 1, Cursor.Position.Y);
+                        break;
+                    case "mr":
+                        Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
+                        break;
+                    case "md":
+                        Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y + 1);
+                        break;
+                    case "mu":
+                        Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y - 1);
+                        break;
             }
         }
 

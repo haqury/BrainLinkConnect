@@ -100,7 +100,7 @@
             this.textBoxHighGamma.Name = "textBoxHighGamma";
             this.textBoxHighGamma.Size = new System.Drawing.Size(52, 20);
             this.textBoxHighGamma.TabIndex = 155;
-            this.textBoxHighGamma.Text = "600";
+            this.textBoxHighGamma.Text = "50";
             // 
             // textBoxLowGamma
             // 
@@ -110,7 +110,7 @@
             this.textBoxLowGamma.Name = "textBoxLowGamma";
             this.textBoxLowGamma.Size = new System.Drawing.Size(52, 20);
             this.textBoxLowGamma.TabIndex = 154;
-            this.textBoxLowGamma.Text = "600";
+            this.textBoxLowGamma.Text = "50";
             // 
             // textBoxHighBeta
             // 
@@ -120,7 +120,7 @@
             this.textBoxHighBeta.Name = "textBoxHighBeta";
             this.textBoxHighBeta.Size = new System.Drawing.Size(52, 20);
             this.textBoxHighBeta.TabIndex = 153;
-            this.textBoxHighBeta.Text = "600";
+            this.textBoxHighBeta.Text = "50";
             // 
             // textBoxLowBeta
             // 
@@ -130,7 +130,7 @@
             this.textBoxLowBeta.Name = "textBoxLowBeta";
             this.textBoxLowBeta.Size = new System.Drawing.Size(52, 20);
             this.textBoxLowBeta.TabIndex = 152;
-            this.textBoxLowBeta.Text = "600";
+            this.textBoxLowBeta.Text = "50";
             // 
             // textBoxHighAlpha
             // 
@@ -140,7 +140,7 @@
             this.textBoxHighAlpha.Name = "textBoxHighAlpha";
             this.textBoxHighAlpha.Size = new System.Drawing.Size(52, 20);
             this.textBoxHighAlpha.TabIndex = 151;
-            this.textBoxHighAlpha.Text = "600";
+            this.textBoxHighAlpha.Text = "50";
             // 
             // textBoxLowAlpha
             // 
@@ -150,7 +150,7 @@
             this.textBoxLowAlpha.Name = "textBoxLowAlpha";
             this.textBoxLowAlpha.Size = new System.Drawing.Size(52, 20);
             this.textBoxLowAlpha.TabIndex = 150;
-            this.textBoxLowAlpha.Text = "600";
+            this.textBoxLowAlpha.Text = "50";
             // 
             // textBoxMeditation
             // 
@@ -170,7 +170,7 @@
             this.textBoxTheta.Name = "textBoxTheta";
             this.textBoxTheta.Size = new System.Drawing.Size(52, 20);
             this.textBoxTheta.TabIndex = 148;
-            this.textBoxTheta.Text = "5000";
+            this.textBoxTheta.Text = "300";
             // 
             // textBoxDelta
             // 
@@ -180,7 +180,7 @@
             this.textBoxDelta.Name = "textBoxDelta";
             this.textBoxDelta.Size = new System.Drawing.Size(52, 20);
             this.textBoxDelta.TabIndex = 147;
-            this.textBoxDelta.Text = "5000";
+            this.textBoxDelta.Text = "300";
             // 
             // textBoxAttention
             // 
@@ -350,7 +350,7 @@
             this.textBoxHighGammaX.Name = "textBoxHighGammaX";
             this.textBoxHighGammaX.Size = new System.Drawing.Size(52, 20);
             this.textBoxHighGammaX.TabIndex = 174;
-            this.textBoxHighGammaX.Text = "10";
+            this.textBoxHighGammaX.Text = "3";
             // 
             // textBoxLowGammaX
             // 
@@ -360,7 +360,7 @@
             this.textBoxLowGammaX.Name = "textBoxLowGammaX";
             this.textBoxLowGammaX.Size = new System.Drawing.Size(52, 20);
             this.textBoxLowGammaX.TabIndex = 173;
-            this.textBoxLowGammaX.Text = "10";
+            this.textBoxLowGammaX.Text = "3";
             // 
             // textBoxHighBetaX
             // 
@@ -370,7 +370,7 @@
             this.textBoxHighBetaX.Name = "textBoxHighBetaX";
             this.textBoxHighBetaX.Size = new System.Drawing.Size(52, 20);
             this.textBoxHighBetaX.TabIndex = 172;
-            this.textBoxHighBetaX.Text = "10";
+            this.textBoxHighBetaX.Text = "3";
             // 
             // textBoxLowBetaX
             // 
@@ -380,7 +380,7 @@
             this.textBoxLowBetaX.Name = "textBoxLowBetaX";
             this.textBoxLowBetaX.Size = new System.Drawing.Size(52, 20);
             this.textBoxLowBetaX.TabIndex = 171;
-            this.textBoxLowBetaX.Text = "10";
+            this.textBoxLowBetaX.Text = "3";
             // 
             // textBoxHighAlphaX
             // 
@@ -390,7 +390,7 @@
             this.textBoxHighAlphaX.Name = "textBoxHighAlphaX";
             this.textBoxHighAlphaX.Size = new System.Drawing.Size(52, 20);
             this.textBoxHighAlphaX.TabIndex = 170;
-            this.textBoxHighAlphaX.Text = "10";
+            this.textBoxHighAlphaX.Text = "3";
             // 
             // textBoxLowAlphaX
             // 
@@ -400,7 +400,7 @@
             this.textBoxLowAlphaX.Name = "textBoxLowAlphaX";
             this.textBoxLowAlphaX.Size = new System.Drawing.Size(52, 20);
             this.textBoxLowAlphaX.TabIndex = 169;
-            this.textBoxLowAlphaX.Text = "10";
+            this.textBoxLowAlphaX.Text = "3";
             // 
             // textBoxMeditationX
             // 
@@ -420,7 +420,7 @@
             this.textBoxThetaX.Name = "textBoxThetaX";
             this.textBoxThetaX.Size = new System.Drawing.Size(52, 20);
             this.textBoxThetaX.TabIndex = 167;
-            this.textBoxThetaX.Text = "10";
+            this.textBoxThetaX.Text = "3";
             // 
             // textBoxDeltaX
             // 
@@ -430,7 +430,7 @@
             this.textBoxDeltaX.Name = "textBoxDeltaX";
             this.textBoxDeltaX.Size = new System.Drawing.Size(52, 20);
             this.textBoxDeltaX.TabIndex = 166;
-            this.textBoxDeltaX.Text = "10";
+            this.textBoxDeltaX.Text = "3";
             // 
             // textBoxAttentionX
             // 
@@ -450,7 +450,7 @@
             this.textBoxMultiCount.Name = "textBoxMultiCount";
             this.textBoxMultiCount.Size = new System.Drawing.Size(52, 20);
             this.textBoxMultiCount.TabIndex = 175;
-            this.textBoxMultiCount.Text = "5";
+            this.textBoxMultiCount.Text = "10";
             // 
             // ConfigFaultForm
             // 
